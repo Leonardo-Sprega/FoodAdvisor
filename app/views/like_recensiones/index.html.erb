@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Like recensiones</h1>
+
+<div id="like_recensiones">
+  <% @like_recensiones.each do |like_recensione| %>
+    <%= render like_recensione %>
+    <p>
+      <%= link_to "Show this like recensione", like_recensione %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New like recensione", new_like_recensione_path %>

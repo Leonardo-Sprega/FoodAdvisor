@@ -1,0 +1,58 @@
+
+.contenitore{
+    background-color: white;
+}
+
+.null{
+    height: 100px;
+}
+
+.login_alert{
+    margin: auto;
+    text-align: center;
+    padding: 25px 25px;
+    width: 25%;
+    background-color: rgba(255, 0, 0, 0.382);
+    border-radius: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login_form{
+    margin:auto;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    width: 25%;
+    margin-bottom: 50px;
+}
+
+
+
+.login_titolo{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+
+
+
+.login_text{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    height: 40px;
+    padding: 5px;
+}
+
+.login_btn{
+    margin-top: 20px;
+}
+
+
+
+
+
+

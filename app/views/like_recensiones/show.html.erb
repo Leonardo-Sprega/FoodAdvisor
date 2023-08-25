@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @like_recensione %>
+
+<div>
+  <%= link_to "Edit this like recensione", edit_like_recensione_path(@like_recensione) %> |
+  <%= link_to "Back to like recensiones", like_recensiones_path %>
+
+  <%= button_to "Destroy this like recensione", @like_recensione, method: :delete %>
+</div>

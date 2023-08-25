@@ -1,0 +1,31 @@
+
+
+<div class="layout">
+
+<h1 style="display:flex; justify-content: center;margin-top:150px;">Alla ricerca di un ristorante?</h1>
+
+    <div class="search-form">
+        <%= render partial: "search/form", locals: {results: []}%>
+    </div>
+    
+
+        <div class="map-description">
+            <p>
+            Oppure puoi scegliere un ristorante sulla mappa qui sotto
+            </p>
+        </div>
+        
+    <div id="map"></div>
+
+
+    <div class="carousel-description">
+        <div class="carousel-text">
+            <p>
+                Ancora indeciso? Ecco i ristoranti migliori che hanno scelto i nostri utenti
+            </p>
+        </div>
+        <%= render "carousel"%>
+    </div>
+</div>
+
+

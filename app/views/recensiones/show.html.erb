@@ -1,0 +1,49 @@
+
+
+  <div class="container" id="newrist">
+    <div class="container" style="margin:auto;margin-left:15%;margin-right:25%;width: 50%;">
+
+      <p style="margin-bottom:25px;">
+        <strong>Titolo esperienza:</strong>
+        <%= @recensione.titolo %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Descrizione esperienza:</strong>
+        <%= @recensione.commento %>
+      </p>
+      
+      <p style="margin-bottom:25px;">
+        <strong>datavisita:</strong>
+        <%= @recensione.datavisita.strftime('%d-%m-%Y') %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Valutazione esperienza(1-5):</strong>
+        <%= @recensione.valutazione %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Valutazione monetaria(1-3):</strong>
+        <%= @recensione.prezzo %>
+      </p>
+
+      <!--Inserire le foto della recensione -->
+      <p style="margin-bottom:25px;">
+        <strong>Foto</strong>
+        <div class="row p-0" id="row-image">
+          <%if @recensione.foto1%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto1%> ></div><%end%>
+          <%if @recensione.foto2%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto2%> ></div><%end%>
+          <%if @recensione.foto3%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto3%> ></div><%end%>
+          <%if @recensione.foto4%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto4%> ></div><%end%>
+          <%if @recensione.foto5%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto5%> ></div><%end%>
+          <%if @recensione.foto6%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= @recensione.foto6%> ></div><%end%>
+        </div>
+      </p>
+
+      <div id="div-back" style="margin-bottom:30px;">
+        <%= link_to "Ritorna alla hone page", home_index_path,id:"button" ,class:"btn btn-light" %> 
+      </div>
+    </div>
+  </div>
+

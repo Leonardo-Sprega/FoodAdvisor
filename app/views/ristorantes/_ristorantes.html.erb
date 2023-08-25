@@ -1,0 +1,10 @@
+<% ristorantes.each do |ristorante| %>
+
+<div class="box-ristoranti">
+    <h2><%= ristorante.nome  %></h2>
+    <p><%= ristorante.descrizione %></p>
+    <p>
+        <%= link_to "Mostra questo ristorante", ristorante, class: "links" %>
+    </p>
+</div>
+<% end %>

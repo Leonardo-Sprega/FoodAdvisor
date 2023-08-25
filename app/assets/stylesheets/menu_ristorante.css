@@ -1,0 +1,28 @@
+/* Menu della pagina ristorante */
+#rist #ristorantes_menu {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+}
+
+#rist #ristorantes_menu .h-list-menu {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+#rist #ristorantes_menu .h-list-menu li {
+    min-width: 18%;
+    display: inline;
+}
+
+#rist #ristorantes_menu .h-list-menu li #button{
+    min-width: 18%;
+    font-weight: bold;
+}
+
+#rist #ristorantes_menu .h-list-menu li #button:hover{
+    background-color: black;
+    color: orange;
+}

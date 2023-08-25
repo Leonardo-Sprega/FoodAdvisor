@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tipo_cucina %>
+
+<div>
+  <%= link_to "Edit this tipo cucina", edit_tipo_cucina_path(@tipo_cucina) %> |
+  <%= link_to "Back to tipo cucinas", tipo_cucinas_path %>
+
+  <%= button_to "Destroy this tipo cucina", @tipo_cucina, method: :delete %>
+</div>

@@ -1,0 +1,53 @@
+
+  <div class="container" id="newrist">
+    <div class="container" style="margin:auto;margin-left:15%;margin-right:25%;width: 50%;">
+      <p style="margin-bottom:25px;">
+        <strong>Ora:</strong>
+        <%= @prenotazione.ora.strftime('%T') %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Data:</strong>
+        <%= @prenotazione.data.strftime('%d-%m-%Y') %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Nomecliente:</strong>
+        <%= @prenotazione.nomecliente %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Cognomecliente:</strong>
+        <%= @prenotazione.cognomecliente %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Telefonocliente:</strong>
+        <%= @prenotazione.telefonocliente %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Emailcliente:</strong>
+        <%= @prenotazione.emailcliente %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Nadulti:</strong>
+        <%= @prenotazione.nadulti %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Nbambini:</strong>
+        <%= @prenotazione.nbambini %>
+      </p>
+
+      <p style="margin-bottom:25px;">
+        <strong>Messaggio:</strong>
+        <%= @prenotazione.messaggio %>
+      </p>
+
+      <div id="div-back" style="margin-bottom:30px;">
+        <%= link_to "Ritorna alla hone page", home_index_path,id:"button" ,class:"btn btn-light" %> 
+      </div>
+    </div>
+  </div>

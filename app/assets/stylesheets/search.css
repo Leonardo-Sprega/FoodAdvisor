@@ -1,0 +1,85 @@
+.results {
+    overflow-y: auto; 
+    position: absolute; 
+    border-radius: 0.5rem; 
+    width: 100%; 
+    background-color: #ffffff; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+
+    z-index: 100;
+}
+
+input:focus::placeholder {
+    color: transparent;
+  }
+
+.ristorante-results {
+    padding: 15px; 
+    border-bottom-width: 5px; 
+    border-color: #000000; 
+    position: relative;
+    z-index: 1000;
+}
+
+.ristorante-results:hover {
+    background-color: #F3F4F6; 
+}
+
+.text-field {
+    padding: 0.5rem; 
+    border-radius: 100px; 
+    border-width: 0px; 
+    box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
+    width: 100%; 
+    height: 60px;
+}
+
+.text-field:focus-visible{
+    outline: none;
+}
+
+.cerca-class {
+    display: flex; 
+    position: absolute; 
+    top: 0;
+    bottom: 0; 
+    right: 0; 
+    align-items: center; 
+}
+   
+.cerca-btn {
+    color: #ffffff; 
+    background-color: orange; 
+    border: none;
+    margin-right: 5px;
+    border-radius: 100px;
+    padding: 12px;
+    padding-inline: 20px;
+    font-size: 18px;
+    font: bold;
+}
+
+.cerca-btn:hover {
+ background-color:  rgb(255, 198, 91); 
+}
+
+.suggs {
+    position: absolute; 
+    margin-top: 0.5rem; 
+    border-radius: 0.5rem; 
+    width: 100%; 
+    background-color: #ffffff; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+
+}
+
+.search-form { 
+    width: 60%;
+    margin:auto;
+    margin-top: 100px;
+}
+
+.ristoranti-search {
+    text-decoration: none;
+    color: #000000;
+}

@@ -1,0 +1,151 @@
+
+<%= form_with(model: ristorante ) do |form| %>
+  <% if ristorante.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ristorante.errors.count, "error") %> prohibited this ristorante from being saved:</h2>
+
+      <ul>
+        <% ristorante.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nome %>
+    <%= form.text_field :nome ,class:"form-control" ,placeholder:"Inserisci il nome del Ristorante", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email ,class:"form-control" ,placeholder:"Inserisci l'email del Ristorante", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :telefono %>
+    <%= form.number_field :telefono,maxlength: 10,class:"form-control" ,placeholder:"Inserisci numero di telefono del Ristorante", pattern:"[0-9]{10}",required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :regione %>
+    <%= form.text_field :regione ,class:"form-control" ,placeholder:"Inserisci la Regione dove e' situato il Ristorante", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :provincia %>
+    <%= form.text_field :provincia ,class:"form-control" ,placeholder:"Inserisci la Provincia dove e' situato il Ristorante", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :citta %>
+    <%= form.text_field :citta ,class:"form-control" ,placeholder:"Inserisci la Citta dove e' situato il Ristorante", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :indirizzo %>
+    <%= form.text_field :indirizzo ,class:"form-control" ,placeholder:"Inserisci l'Indirizzo dove e' situato il Ristorante", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :cap %>
+    <%= form.text_field :cap ,class:"form-control" ,placeholder:"Inserisci il Cap dove e' situato il Ristorante", required: true %>
+  </div>
+
+  <div class="form-group ">
+    <label>Ora Apertura</label>
+    <%= form.time_field :oraapertura ,class:"form-control" ,placeholder:"Orario di apertura del Ristorante", required: true  %>
+  </div>
+  <div class="form-group ">
+    <label>Ora Chiusura</label>
+    <%= form.time_field :orachiusura ,class:"form-control" ,placeholder:"Orario di chiusura del Ristorante", required: true  %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Tipo Cucina</label>
+    <%=form.select :tipo_cucina_id, options_for_select(TipoCucina.all.collect{ |tc| [tc.nome, tc.id] }), prompt: "Seleziona qualcosa", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :descrizione %>
+    <%= form.text_area :descrizione, size:"60x10" ,class:"form-control" ,placeholder:"Inserisci una descrizione del tuo Ristorante", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sitoweb1 %>
+    <%= form.text_field :sitoweb1 ,class:"form-control" ,placeholder:"Collega un sito del Ristorante" %>
+  </div>
+  <div class="form-group ">
+    <%= form.label :sitoweb2 %>
+    <%= form.text_field :sitoweb2 ,class:"form-control" ,placeholder:"Collega un sito del Ristorante" %>
+  </div>
+  <div class="form-group ">
+    <%= form.label :sitoweb3 %>
+    <%= form.text_field :sitoweb3 ,class:"form-control" ,placeholder:"Collega un sito del Ristorante" %>
+  </div>
+
+  <div class="form-group ">
+    <h3>Menu del Ristorante</h3>
+      <div id="form-piatto">
+        <!-- inizio form per le piatto-->
+        <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper">
+        <template data-nested-form-target="template">
+          <%= form.fields_for :piattos, Piatto.new, child_index: 'NEW_RECORD' do |piatto_fields| %>
+            <%= render "ristorantes/ristorante_piatto_form", f: piatto_fields %>
+          <% end %>
+        </template>
+
+        <%= form.fields_for :piattos do |piatto_fields| %>
+          <%= render "ristorantes/ristorante_piatto_form", f: piatto_fields %>
+        <% end %>
+
+          <!-- Inserted elements will be injected before that target. -->
+        <div data-nested-form-target="target"></div>
+
+        <button type="button" data-action="nested-form#add">Add piatto</button>
+
+        </div>
+        <!-- fine form per le piatto-->
+      </div>
+  </div>
+
+  <!-- Se cambiamo metodo per inserire foto, tramite inserimento diretto del file   
+  <div class="form-group">
+    <label class="custom-file-label" for="customFile">foto ristorante</label>
+    <input type="file" class="custom-file-input" id="customFile" accept="image/*" multiple>
+  </div>
+  -->
+  <!-- Se cambiamo metodo per inserire foto, tramite inserimento del link-->
+
+  <div class="form-group ">
+    <h3>Foto del Ristorante</h3>
+    <p>Inserire l'id(si trova tra d/  /view nell'url) del link di condivisione della foto dopo averla cariacata sul tuo drive google(file visibile a chiunque abbia il link) </p>
+    <p disabled>#inserisci questo link per ogni foto# https://drive.google.com/uc?export=view&id=INSERIRIRE QUA IL TUO ID </p>
+      <div id="form-foto">
+        <!-- inizio form per le foto-->
+        <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper">
+        <template data-nested-form-target="template">
+          <%= form.fields_for :foto_ristorantes, FotoRistorante.new, child_index: 'NEW_RECORD' do |foto_fields| %>
+            <%= render "ristorantes/ristorante_foto_ristorante_form", f: foto_fields %>
+          <% end %>
+        </template>
+
+        <%= form.fields_for :foto_ristorantes do |foto_fields| %>
+          <%= render "ristorantes/ristorante_foto_ristorante_form", f: foto_fields %>
+        <% end %>
+
+          <!-- Inserted elements will be injected before that target. -->
+        <div data-nested-form-target="target"></div>
+
+        <button type="button" data-action="nested-form#add">Add foto</button>
+
+        </div>
+        <!-- fine form per le foto-->
+      </div>
+  </div>
+
+  <div class="form-group" id="div-submit">
+    <%= form.submit  %>
+  </div>
+
+<% end %>
+
+

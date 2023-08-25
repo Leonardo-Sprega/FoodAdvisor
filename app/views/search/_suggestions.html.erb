@@ -1,0 +1,11 @@
+<% if results.any? %>
+ <div class="results">
+    <% results.each do |ristorante| %>
+        <%= link_to ristorante, class:"ristoranti-search" do %>
+            <div class="ristorante-results">
+                <%= ristorante.nome %>
+            </div>
+        <% end %>
+    <% end %>
+ </div>
+<% end %>

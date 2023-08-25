@@ -1,0 +1,107 @@
+<%= form_with(model: utente) do |form| %>
+
+  <% if utente.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(utente.errors.count, "error") %> prohibited this utente from being saved:</h2>
+
+      <ul>
+        <% utente.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "null">
+  </div>
+
+
+  <% flash.each do |type, msg| %>
+    <div class = "register_alert">
+      <%= msg %>
+    </div>
+  <% end %>
+
+
+  <div class = "form_register">
+
+      <div class = "titolo_form">
+        Registrati
+      </div>
+
+
+
+      <div class = "parte-centrale">
+
+        <div class = "parte-sx"> 
+          <div>
+            <%= form.label :username, style: "display: block", class: "register-label" %>
+            <%= form.text_field :username , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :nome, style: "display: block", class: "register-label" %>
+            <%= form.text_field :nome , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :cognome, style: "display: block", class: "register-label" %>
+            <%= form.text_field :cognome , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :cap_regione, style: "display: block", class: "register-label" %>
+            <%= form.text_field :cap_regione , class: "register-text" %>
+          </div>
+        </div>
+
+        <div class = "parte-dx">
+          <div>
+            <%= form.label :telefono, style: "display: block", class: "register-label" %>
+            <%= form.number_field :telefono , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :email, style: "display: block", class: "register-label" %>
+            <%= form.text_field :email , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :password, style: "display: block", class: "register-label" %>
+            <%= form.text_field :password , class: "register-text" %>
+          </div>
+
+          <div>
+            <%= form.label :avatar, style: "display: block", class: "register-label" %>
+            <%= form.text_field :avatar , class: "register-text"%>
+            <%= form.label "facoltativo", style: "display: block", class: "register-label-2" %>
+          </div>  
+
+        </div>
+
+      </div>
+
+      <div>
+        <%= form.label :ristoratore, style: "display: block", class: "register-label" %>
+        <%=form.select :ristoratore, options_for_select([["Si",true],["No",false]]), prompt: "Sei un ristoratore?", class: "register-text" ,required: true %>
+      </div>
+
+      <div class = "button-submit">
+        <%= form.submit class: "nav-btn"%>
+      </div>
+
+      <div class = "button-back">
+        <%= link_to "Back to utentes", utentes_path , class: "nav-btn" %>
+      </div> 
+
+
+
+
+  </div>
+
+
+
+
+
+  
+<% end %>

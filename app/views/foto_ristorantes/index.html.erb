@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Foto ristorantes</h1>
+
+<div id="foto_ristorantes">
+  <% @foto_ristorantes.each do |foto_ristorante| %>
+    <%= render foto_ristorante %>
+    <p>
+      <%= link_to "Show this foto ristorante", foto_ristorante %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New foto ristorante", new_foto_ristorante_path %>
