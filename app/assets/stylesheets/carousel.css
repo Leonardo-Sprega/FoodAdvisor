@@ -1,0 +1,44 @@
+.card-container{
+  height: 30vh;
+}
+
+
+.clickable1 {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -2rem;
+  color: white;
+  text-shadow: 0 0 3px #000;
+
+}
+.clickable2 {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -2rem;
+  color: white;
+  text-shadow: 0 0 3px #000;
+}
+
+.clickable1:hover,
+.clickable2:hover {
+  color:orange;
+  transition: 0.5s;
+}
+
+.carouselBtns{
+  position:relative;
+  margin-top: -15vh;
+}
+
+.carousel-bg {
+  position: absolute;
+  left: 0;
+  background-color: bisque;
+  width: 100vw;
+  height: 37vh;
+  z-index: -1;
+  
+}

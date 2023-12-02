@@ -1,0 +1,85 @@
+
+  <div class="container" id="newrist">
+    <h1>Descrivi la tua esperienza da <%= @ristorante.nome %></h1>
+
+    <%= form_tag ristorante_recensiones_path(@ristorante), class: 'form' do %>
+        
+        <div class="form-group ">
+          <label> Dai un titolo alla tua esperienza </label>
+          <%= text_field_tag 'recensione[titolo]', nil,class:"form-control",placeholder:"Inserisci il titolo",required: true %>
+        </div>
+
+        <div class="form-group ">
+          <label> Descrivi la tua esperienza </label>
+          <%= text_area_tag 'recensione[commento]', nil,placeholder:"Descrivi la tua esperienza nei minimi dettagli", size: '60x10',class:"form-control", required: true %>
+        </div> 
+
+        <div class="form-group ">
+          <label> Data Visita </label>
+          <%= date_field_tag 'recensione[datavisita]', nil ,class:"form-control", max: Date.today, required: true %>
+        </div>
+
+        <div class="form-group ">
+          <label> Valuta la tua esperienza da 1 a 5 </label>
+          <%= select_tag 'recensione[valutazione]', options_for_select(1..5),class:"form-control",prompt:"Dai un voto" ,required: true %>
+        </div>
+
+        <div class="form-group ">
+          <label> Valuta la tua esperienza in ambito monetario da 1 a 3 </label>
+          <%= select_tag 'recensione[prezzo]', options_for_select(1..3),class:"form-control",prompt:"Dai un voto" ,required: true %>
+        </div>
+
+        <div class="form-group ">
+          <h3>Completa la tua recensione con delle foto(max 6)</h3>
+          <p>Inserire l'id(si trova tra d/  /view nell'url) del link di condivisione della foto dopo averla cariacata sul tuo drive google(file visibile a chiunque abbia il link) </p>
+          <p disabled>#inserisci questo link per ogni foto# https://drive.google.com/uc?export=view&id=INSERIRIRE QUA IL TUO ID </p>
+            <div id="form-foto">
+              <!-- inizio form per le foto-->
+              <div class="form-group ">
+                <label> foto1 </label>
+                <%= text_field_tag 'recensione[foto1]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              <div class="form-group ">
+                <label> foto2 </label>
+                <%= text_field_tag 'recensione[foto2]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              <div class="form-group ">
+                <label> foto3 </label>
+                <%= text_field_tag 'recensione[foto3]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              <div class="form-group ">
+                <label> foto4 </label>
+                <%= text_field_tag 'recensione[foto4]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              <div class="form-group ">
+                <label> foto5 </label>
+                <%= text_field_tag 'recensione[foto5]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              <div class="form-group ">
+                <label> foto6 </label>
+                <%= text_field_tag 'recensione[foto6]', nil,class:"form-control",placeholder:"Inserisci il link come descritto sopra" %>
+              </div>
+              
+              <!-- fine form per le foto-->
+            </div>
+        </div>
+
+        
+
+        <div class="form-group" id="div-submit">
+          <%= submit_tag 'Pubblica la  tua recensione' %>
+        </div>
+
+      <% end %>
+
+    <div id="div-back">
+        <%= link_to 'Back', @ristorante %>
+    </div>
+  </div>
+
+
+
+
+        
+
+        

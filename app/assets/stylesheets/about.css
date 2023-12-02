@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Fira+Sans:ital@1&display=swap');
+
+.main-paragraph {
+    font-size: 20px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 60%;
+    white-space:pre-wrap;
+}
+
+.hyperlink{
+    text-decoration:none; 
+    color:black; 
+    font-weight:600;
+}
+
+.hyperlink:hover{
+    color: orange;
+}
+
+.end-line-about {
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    text-align: center;
+}
+
+.subheader-about {
+    margin-top: -25px;
+    margin-bottom: -40px;
+}
+
+.header-about{
+    background-image: url("4492606.jpg");
+    height: 300px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

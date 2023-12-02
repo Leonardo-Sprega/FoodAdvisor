@@ -1,0 +1,15 @@
+
+
+    <div class="container" id="newrist">
+      <h1>Cambia i dati del tuo Ristorante</h1>
+
+      <%= render "form", ristorante: @ristorante %>
+
+      <br>
+
+      <div id="div-back">
+        <%= link_to "Show this ristorante", @ristorante %> |
+        <%= link_to "Back to ristorantes", ristorantes_path %>
+      </div>
+    </div>
+

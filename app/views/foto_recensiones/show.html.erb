@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @foto_recensione %>
+
+<div>
+  <%= link_to "Edit this foto recensione", edit_foto_recensione_path(@foto_recensione) %> |
+  <%= link_to "Back to foto recensiones", foto_recensiones_path %>
+
+  <%= button_to "Destroy this foto recensione", @foto_recensione, method: :delete %>
+</div>

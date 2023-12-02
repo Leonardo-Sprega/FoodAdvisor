@@ -1,0 +1,63 @@
+<%= form_with(model: prenotazione, model: ristorante) do |form| %>
+  <% if prenotazione.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(prenotazione.errors.count, "error") %> prohibited this prenotazione from being saved:</h2>
+
+      <ul>
+        <% prenotazione.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group ">
+    <%= form.label :nomecliente, "Nome del cliente"%>
+    <%= form.text_field :nomecliente ,class:"form-control" ,placeholder:"Inserisci il cognome del cliente", required: true %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :cognomecliente, "Cognome del cliente"%>
+    <%= form.text_field :cognomecliente ,class:"form-control" ,placeholder:"Inserisci il cognome del cliente" %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :telefonocliente, "Telefono del cliente"%>
+    <%= form.number_field :telefonocliente,maxlength: 10,class:"form-control" ,placeholder:"Inserisci numero di telefono del cliente", pattern:"[0-9]{10}",required: true %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :emailcliente , "Email del cliente"%>
+    <%= form.email_field :emailcliente ,class:"form-control" ,placeholder:"Inserisci l'email del cliente"%>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :ora %>
+    <%= form.time_field :ora ,class:"form-control" ,placeholder:"Orario prenotazione", required: true  %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :data %>
+    <%= form.date_field :data ,class:"form-control" ,placeholder:"Orario prenotazione", required: true  %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :nadulti , "Adulti presenti"%>
+    <%= form.number_field :nadulti,maxlength: 10,class:"form-control" ,placeholder:"Inserisci quanti adulti sono presenti alla cena",required: true %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :nbambini , "Bambini presenti"%>
+    <%= form.number_field :nbambini,maxlength: 10,class:"form-control" ,placeholder:"Inserisci quanti bambini sono presenti alla cena",required: true %>
+  </div>
+
+  <div class="form-group ">
+    <%= form.label :messaggio, "Inserisci un messaggio per il ristoratore" %>
+    <%= form.text_area :messaggio, size:"60x10" ,class:"form-control" ,placeholder:"Inserisci note, allergie, ecc...." %>
+  </div>
+
+  <div class="form-group" id="div-submit">
+    <%= form.submit "Prenotati!" %>
+  </div>
+
+<% end %>

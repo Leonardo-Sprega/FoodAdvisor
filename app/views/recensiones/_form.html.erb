@@ -1,0 +1,52 @@
+<%= form_with(model: recensione, data:{
+      controller:"nested-form",
+      nested_form_wrapper_selector_value:".nested-form-wrapper"
+    }) do |form| %>
+  <% if recensione.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recensione.errors.count, "error") %> prohibited this recensione from being saved:</h2>
+
+      <ul>
+        <% recensione.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :titolo, style: "display: block" %>
+    <%= form.text_field :titolo %>
+  </div>
+
+  <div>
+    <%= form.label :commento, style: "display: block" %>
+    <%= form.text_area :commento %>
+  </div>
+
+  <div>
+    <%= form.label :datavisita, style: "display: block" %>
+    <%= form.datetime_field :datavisita %>
+  </div>
+
+  <div>
+    <%= form.label :datarecensione, style: "display: block" %>
+    <%= form.datetime_field :datarecensione %>
+  </div>
+
+  <div>
+    <%= form.label :valutazione, style: "display: block" %>
+    <%= form.select :valutazione, [1,2,3,4,5], {include_blank: "Select something"} %>
+  </div>
+
+  <div>
+    <%= form.label :prezzo, style: "display: block" %>
+    <%= form.select :prezzo, [1,2,3], {include_blank: "Select something"}%>
+  </div>
+
+  
+   
+
+  <%= form.submit %>
+  
+<% end %>

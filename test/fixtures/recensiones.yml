@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titolo: MyString
+  commento: MyText
+  datavisita: 2023-06-25 01:47:17
+  datarecensione: 2023-06-25 01:47:17
+  valutazione: 1
+  prezzo: 1
+  utente: one
+  ristorante: one
+
+two:
+  titolo: MyString
+  commento: MyText
+  datavisita: 2023-06-25 01:47:17
+  datarecensione: 2023-06-25 01:47:17
+  valutazione: 1
+  prezzo: 1
+  utente: two
+  ristorante: two

@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ora: 2023-06-25 02:09:56
+  data: 2023-06-25 02:09:56
+  nomecliente: MyString
+  cognomecliente: MyString
+  telefonocliente: 1
+  emailcliente: MyString
+  nadulti: 1
+  nbambini: 1
+  messaggio: MyText
+  utente: one
+  ristorante: one
+
+two:
+  ora: 2023-06-25 02:09:56
+  data: 2023-06-25 02:09:56
+  nomecliente: MyString
+  cognomecliente: MyString
+  telefonocliente: 1
+  emailcliente: MyString
+  nadulti: 1
+  nbambini: 1
+  messaggio: MyText
+  utente: two
+  ristorante: two

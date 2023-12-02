@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tipo cucinas</h1>
+
+<div id="tipo_cucinas">
+  <% @tipo_cucinas.each do |tipo_cucina| %>
+    <%= render tipo_cucina %>
+    <p>
+      <%= link_to "Show this tipo cucina", tipo_cucina %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tipo cucina", new_tipo_cucina_path %>

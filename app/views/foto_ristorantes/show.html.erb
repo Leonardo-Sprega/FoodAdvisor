@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @foto_ristorante %>
+
+<div>
+  <%= link_to "Edit this foto ristorante", edit_foto_ristorante_path(@foto_ristorante) %> |
+  <%= link_to "Back to foto ristorantes", foto_ristorantes_path %>
+
+  <%= button_to "Destroy this foto ristorante", @foto_ristorante, method: :delete %>
+</div>

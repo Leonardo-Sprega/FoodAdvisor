@@ -1,0 +1,108 @@
+/* navbar del ristorante */
+#navbrist {
+    text-transform: capitalize;
+    text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 0.938rem;
+}
+
+#navbrist a{
+    font-weight: bold;
+    color:  rgb(0, 0, 0);
+    font-size: large;
+}
+
+#navbrist li{
+    margin-right: 5%;
+}
+
+#nav-right{
+    width: 100%;
+}
+
+#new-rist{
+    text-transform: none;
+    white-space: nowrap;
+}
+
+
+#navbrist .nav-hv:hover{
+    color:  orange;
+}
+.fa-user{
+    margin: auto;
+    margin-right: 5px;
+}
+.icona_username{
+    border: none;
+    background-color: orange;
+    border-radius: 100px;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    padding-inline: 14px;
+    margin-right: 5px;
+}
+
+.nav-btn {
+    border: none;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100px;
+    color: white;
+    padding: 8px;
+    padding-inline: 12px;
+    margin-left: 5px;
+}
+
+.nav-btn2 {
+    border: none;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100px;
+    color: white;
+    padding: 8px;
+    padding-inline: 14px;
+    margin-left: 5px;
+}
+
+.nav-btn:hover{
+    background-color: orange;
+}
+
+.nav-btn2:hover{
+    background-color: rgb(47, 47, 47);
+}
+
+.navbar-brand {
+    font-size: 27px !important;
+    height: 50px;
+}
+
+
+
+/* footbar del ristorante */
+
+#ristorantes_footer {
+    margin-top: 20vh;
+    width: 100%;
+    background-color: rgba(254, 231, 220, 0.614);
+    background-color: rgb(255, 198, 92);
+    color: rgb(0, 0, 0);
+}
+
+
+
+#ristorantes_footer .mgfoot{
+    margin-left: 13%;
+    margin-right: 3%;
+}
+
+#ristorantes_footer .l-indice{
+    color: rgb(0, 0, 0);
+    text-decoration-line: none;
+}
+
+#ristorantes_footer .l-indice:hover{
+    color: white;
+}
+

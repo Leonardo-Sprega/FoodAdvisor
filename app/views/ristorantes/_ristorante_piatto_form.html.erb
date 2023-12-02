@@ -1,0 +1,42 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+    <div class="form-group ">
+        <h5>Inserisci il piatto</h5>
+        <%= f.label :nome %>
+        <%= f.text_field :nome ,class:"form-control" ,placeholder:"Inserisci il nome del piatto" %>
+    </div>
+
+    <div class="form-group ">
+        <%= f.label :descrizione %>
+        <%= f.text_field :descrizione ,class:"form-control" ,placeholder:"Inserisci una breve descrizione del piatto" %>
+    </div>
+
+    <div class="form-group ">
+        <%= f.label :prezzo %>
+        <%= f.number_field :prezzo ,class:"form-control" ,placeholder:"Inserisci il prezzo del piatto ($)" %>
+    </div>
+
+    <button type="button" data-action="nested-form#remove">Remove piatto</button>
+
+    <%= f.hidden_field :_destroy %>
+</div>
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+    <div class="form-group ">
+        <h5>Inserisci il piatto</h5>
+        <%= f.label :nome %>
+        <%= f.text_field :nome ,class:"form-control" ,placeholder:"Inserisci il nome del piatto" %>
+    </div>
+
+    <div class="form-group ">
+        <%= f.label :descrizione %>
+        <%= f.text_field :descrizione ,class:"form-control" ,placeholder:"Inserisci una breve descrizione del piatto" %>
+    </div>
+
+    <div class="form-group ">
+        <%= f.label :prezzo %>
+        <%= f.number_field :prezzo ,class:"form-control" ,placeholder:"Inserisci il prezzo del piatto ($)" %>
+    </div>
+
+    <button type="button" data-action="nested-form#remove">Remove piatto</button>
+
+    <%= f.hidden_field :_destroy %>
+</div>

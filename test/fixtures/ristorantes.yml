@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  regione: MyString
+  provincia: MyString
+  citta: MyString
+  indirizzo: MyString
+  cap: MyString
+  email: MyString
+  telefono: 1
+  sitoweb1: MyString
+  sitoweb2: MyString
+  sitoweb3: MyString
+  descrizione: MyString
+  oraapertura: 2023-06-25 00:21:08
+  orachiusura: 2023-06-25 00:21:08
+  tipo_cucina: one
+
+two:
+  nome: MyString
+  regione: MyString
+  provincia: MyString
+  citta: MyString
+  indirizzo: MyString
+  cap: MyString
+  email: MyString
+  telefono: 1
+  sitoweb1: MyString
+  sitoweb2: MyString
+  sitoweb3: MyString
+  descrizione: MyString
+  oraapertura: 2023-06-25 00:21:08
+  orachiusura: 2023-06-25 00:21:08
+  tipo_cucina: two

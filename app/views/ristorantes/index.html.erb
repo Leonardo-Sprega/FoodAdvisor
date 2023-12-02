@@ -1,0 +1,13 @@
+
+
+<h1>Ristoranti</h1>
+
+<div id="ristorantes">
+  <% @ristorantes.each do |ristorante| %>
+    <p>
+      <%= ristorante.nome%>
+      <%= link_to "Show this ristorante", ristorante %>
+    </p>
+  <% end %>
+</div>
+

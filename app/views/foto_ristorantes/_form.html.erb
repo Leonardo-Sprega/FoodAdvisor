@@ -1,0 +1,27 @@
+<%= form_with(model: foto_ristorante) do |form| %>
+  <% if foto_ristorante.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(foto_ristorante.errors.count, "error") %> prohibited this foto_ristorante from being saved:</h2>
+
+      <ul>
+        <% foto_ristorante.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.label :ristorante_id, style: "display: block" %>
+    <%= form.text_field :ristorante_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

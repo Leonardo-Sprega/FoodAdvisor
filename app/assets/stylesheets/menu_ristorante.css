@@ -1,0 +1,57 @@
+/* Menu della pagina ristorante */
+#rist #ristorantes_menu {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+}
+
+#rist #ristorantes_menu .h-list-menu {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+#rist #ristorantes_menu .h-list-menu li {
+    min-width: 18%;
+    display: inline;
+}
+
+#rist #ristorantes_menu .h-list-menu li #button{
+    min-width: 18%;
+    font-weight: bold;
+}
+
+#rist #ristorantes_menu .h-list-menu li #button:hover{
+    background-color: black;
+    color: orange;
+}
+
+#rist #ristorantes_menu .h-list-menu .rev{
+    display:none;
+}
+
+@media screen and (max-width: 700px) {
+    #rist #ristorantes_menu .h-list-menu li {
+        min-width:  20%;
+    }
+    #rist #ristorantes_menu .h-list-menu li #button{
+        min-width:  20%;
+    }
+    #rist #ristorantes_menu .h-list-menu  .hid{
+        display: none;
+    }
+    #rist #ristorantes_menu .h-list-menu  .rev{
+        display:inline;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    #rist #ristorantes_menu .h-list-menu li {
+        width: fit-content;
+    }
+    #rist #ristorantes_menu .h-list-menu li #button{
+        width: fit-content;
+    }
+}
+
