@@ -4,7 +4,7 @@ class PrenotazionesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @prenotazione = prenotaziones(:one)
   end
-
+ 
   test "should get index" do
     get prenotaziones_url
     assert_response :success
@@ -17,7 +17,7 @@ class PrenotazionesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create prenotazione" do
     assert_difference("Prenotazione.count") do
-      post prenotaziones_url, params: { prenotazione: { cognomecliente: @prenotazione.cognomecliente, data: @prenotazione.data, emailcliente: @prenotazione.emailcliente, messaggio: @prenotazione.messaggio, nadulti: @prenotazione.nadulti, nbambini: @prenotazione.nbambini, nomecliente: @prenotazione.nomecliente, ora: @prenotazione.ora, ristorante_id: @prenotazione.ristorante_id, telefonocliente: @prenotazione.telefonocliente, utente_id: @prenotazione.utente_id } }
+      post prenotaziones_url, params: { prenotazione: { cognomecliente: @prenotazione.cognomecliente, data: @prenotazione.data, emailcliente: @prenotazione.emailcliente, messaggio: @prenotazione.messaggio, nadulti: @prenotazione.nadulti, nbambini: @prenotazione.nbambini, nomecliente: @prenotazione.nomecliente, ora: @prenotazione.ora, ristorante_id: @prenotazione.ristorante_id, telefonocliente: @prenotazione.telefonocliente, user_id: @prenotazione.user_id } }
     end
 
     assert_redirected_to prenotazione_url(Prenotazione.last)
@@ -34,7 +34,7 @@ class PrenotazionesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update prenotazione" do
-    patch prenotazione_url(@prenotazione), params: { prenotazione: { cognomecliente: @prenotazione.cognomecliente, data: @prenotazione.data, emailcliente: @prenotazione.emailcliente, messaggio: @prenotazione.messaggio, nadulti: @prenotazione.nadulti, nbambini: @prenotazione.nbambini, nomecliente: @prenotazione.nomecliente, ora: @prenotazione.ora, ristorante_id: @prenotazione.ristorante_id, telefonocliente: @prenotazione.telefonocliente, utente_id: @prenotazione.utente_id } }
+    patch prenotazione_url(@prenotazione), params: { prenotazione: { cognomecliente: @prenotazione.cognomecliente, data: @prenotazione.data, emailcliente: @prenotazione.emailcliente, messaggio: @prenotazione.messaggio, nadulti: @prenotazione.nadulti, nbambini: @prenotazione.nbambini, nomecliente: @prenotazione.nomecliente, ora: @prenotazione.ora, ristorante_id: @prenotazione.ristorante_id, telefonocliente: @prenotazione.telefonocliente, user_id: @prenotazione.user_id } }
     assert_redirected_to prenotazione_url(@prenotazione)
   end
 

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  post 'search', to: 'search#index', as: 'search'
-  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  
+  # Defines the root path route ("/")
+  # root "articles#index"
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
@@ -10,9 +11,15 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
+  root "home#index"
+
+  post 'search', to: 'search#index', as: 'search'
+  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+
   get '/about', to: 'pages#about'
   get '/contact_us', to: 'pages#contact_us'
 
+  resources :profilo
   resources :login
   resources :home
   resources :tipo_cucinas
@@ -28,9 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root "home#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
 end

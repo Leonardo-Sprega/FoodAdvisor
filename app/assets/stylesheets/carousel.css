@@ -1,121 +1,44 @@
-.carousel-description {
-  margin-top: 100px;
-  margin-bottom: 150px;
+.card-container{
+  height: 30vh;
 }
 
-.carousel-description:before{
-  content: "";
-  background-color: #B8C2FF;
+
+.clickable1 {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -2rem;
+  color: white;
+  text-shadow: 0 0 3px #000;
+
+}
+.clickable2 {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -2rem;
+  color: white;
+  text-shadow: 0 0 3px #000;
+}
+
+.clickable1:hover,
+.clickable2:hover {
+  color:orange;
+  transition: 0.5s;
+}
+
+.carouselBtns{
+  position:relative;
+  margin-top: -15vh;
+}
+
+.carousel-bg {
   position: absolute;
-  height: 55%;
-  width:199vw;
-  left : -100vw;
+  left: 0;
+  background-color: bisque;
+  width: 100vw;
+  height: 37vh;
   z-index: -1;
-}
-
-.carousel-text{
-  padding-top: 10px;
-  font-size: 26px;
-  font-weight: 600;
-
-}
-
-
-
-  img {
-    max-width: 100%;
-  }
-  .carousel-container {
-    width: 100%;
-    position: relative;
-  }
-
-  .inner-carousel {
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-  .track {
-    display: inline-flex;
-    height: 100%;
-    transition: transform 0.2s ease-in-out;
-    
-  }
-  .card-container {
-    width: 404px;
-    height: 100%;
-    flex-shrink: 0;
-    padding-right: 10px;
-    position: relative;
-  }
-
-
-  #cards:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(to top, rgb(0, 0, 0), rgba(255, 255, 255, 0));
-  }
-
-
-  .card {
-    width: 100%;
-    height: 100%;
-    /*display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;*/
-    display: relative;
-    background-position: center bottom;
-    background-size: center;
-    background-repeat: no-repeat;
-  }
-
-  .card:hover{
-    filter: opacity(75%);
-  }
-
-
-  .card-title {
-    color: white;
-    font-size: 32px;
-  }
-
- 
   
-  .navigation button {
-    position: absolute;
-    top: 50%;
-    transform: translatey(-50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    outline: none;
-    background-color: white;
-    border: 2px solid #000;
-    cursor: pointer;
-  }
-
-  .navigation button:hover{
-    background-color: #000;
-    color: white;
-  }
-
-
-
-  .navigation .prev {
-    left: -30px;
-    display: none;
-  }
-  .navigation .prev.show {
-    display: block;
-  }
-  .navigation .next {
-    right: -30px;
-  }
-  .navigation .next.hide {
-    display: none;
-  }
-  
+}

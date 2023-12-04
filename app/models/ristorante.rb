@@ -1,6 +1,6 @@
 class Ristorante < ApplicationRecord
   belongs_to :tipo_cucina
-  belongs_to :utente
+  belongs_to :user
   has_many :recensiones
   has_many :prenotaziones
 

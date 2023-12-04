@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Foto recensiones</h1>
+
+<div id="foto_recensiones">
+  <% @foto_recensiones.each do |foto_recensione| %>
+    <%= render foto_recensione %>
+    <p>
+      <%= link_to "Show this foto recensione", foto_recensione %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New foto recensione", new_foto_recensione_path %>

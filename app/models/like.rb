@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
-  validates :utente_id, uniqueness:{scope: :ristorante_id}
+  validates :user_id, uniqueness:{scope: :ristorante_id}
   # Ex:- scope :active, -> {where(:active => true)}}
   belongs_to :ristorante
-  belongs_to :utente
+  belongs_to :user
 end

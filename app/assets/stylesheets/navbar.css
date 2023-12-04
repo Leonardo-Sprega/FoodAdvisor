@@ -4,7 +4,7 @@
     text-align: center;
     padding-left: 15%;
     padding-right: 15%;
-    padding-top: 15px;
+    padding-top: 0.938rem;
 }
 
 #navbrist a{
@@ -52,6 +52,7 @@
     color: white;
     padding: 8px;
     padding-inline: 12px;
+    margin-left: 5px;
 }
 
 .nav-btn2 {
@@ -65,13 +66,11 @@
 }
 
 .nav-btn:hover{
-    background-color: rgb(47, 47, 47);
-    color: black;
+    background-color: orange;
 }
 
 .nav-btn2:hover{
     background-color: rgb(47, 47, 47);
-    color: orange;
 }
 
 .navbar-brand {
@@ -80,18 +79,14 @@
 }
 
 
-@media only screen and (max-width: 992px) {
-}
-
-
 
 /* footbar del ristorante */
 
 #ristorantes_footer {
-    margin-top: 50px;
+    margin-top: 20vh;
     width: 100%;
     background-color: rgba(254, 231, 220, 0.614);
-    background-color: orange;
+    background-color: rgb(255, 198, 92);
     color: rgb(0, 0, 0);
 }
 

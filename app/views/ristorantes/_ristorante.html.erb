@@ -1,48 +1,28 @@
 <div id="<%= dom_id ristorante %>" style="margin:0;padding:0;">
     
   <div id="rist">
-    
-
     <div class="container" id="ristorantes_info">
-
-      <div class="row">
-        <div class="col-auto">
-          <h1 style="font-weight: bold;"><%= ristorante.nome %></h1>
-        </div>
-        <div class="col-auto">
-          <% if logged_in? %>
-            <% like=Current.user.likes.find_by(ristorante_id: ristorante.id)%>
-            <% if like.nil?%>
-              <form action="/likes" method="post">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                <input type="hidden" name="like[ristorante_id]" value="<%= ristorante.id %>">
-                <input type="submit" class="btn btnlike" value="Like">
-              </form>
-            <%else%>
-              <form action="<%= like_path(like) %>" method="post">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" class="btn btnlike" value="Unlike">
-              </form>
-            <%end%>
-          <%else%>
-            <%= button_to 'Like', login_path ,class:"btn btnlike" %>
-          <%end%>
-        </div>
-        <div class="col-auto">
-          <p id="textcons"><strong>Consigliato da <%= ristorante.likes.count%> utenti!</strong></p>
-        </div>
-      </div>
+      <%= render 'ristorante_like_form', ristorante_id: ristorante.id%>        
       <div class="row"  style="margin-left: 10px;margin-bottom: 8px;margin-top: -10px;">
         <% Recensione.where(ristorante_id:params[:id]).group(:ristorante_id).average(:valutazione).each do |id, avg| %>
-          <div class="col-auto">val: <%= avg.to_f %>/5</div>
+            <div class="col-auto">
+              <i class="fa-solid fa-star fa-lg" <% if avg.to_f>=1%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+              <i class="fa-solid fa-star fa-lg" <% if avg.to_f>=2%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+              <i class="fa-solid fa-star fa-lg" <% if avg.to_f>=3%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+              <i class="fa-solid fa-star fa-lg" <% if avg.to_f>=4%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+              <i class="fa-solid fa-star fa-lg" <% if avg.to_f>=5%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+            </div>
         <% end %>
         <% Recensione.where(ristorante_id:params[:id]).group(:ristorante_id).average(:prezzo).each do |id, avg| %>
-          <div class="col-auto">pre: <%= avg.to_f %>/3</div>
+          <div class="col-auto">
+            <i class="fa-solid fa-dollar-sign fa-lg" <% if avg.to_f>=1%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+            <i class="fa-solid fa-dollar-sign fa-lg" <% if avg.to_f>=2%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+            <i class="fa-solid fa-dollar-sign fa-lg" <% if avg.to_f>=3%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+          </div>
         <% end %>    
-        <div class="col-auto">n. rec:<%= Recensione.where(ristorante_id:params[:id]).count(:all) %></div>
-        <div class="col-auto">tipo: <%= TipoCucina.find(ristorante.tipo_cucina_id).nome %></div>
-        <div class="col-auto">orario (<%= ristorante.oraapertura.strftime("%H:%M") %> - <%= ristorante.orachiusura.strftime("%H:%M") %> )</div>
+        <%# <div class="col-auto">n. rec:<%= Recensione.where(ristorante_id:params[:id]).count(:all) %><%#</div> %>
+        <div class="col-auto"><i class="fa-solid fa-utensils fa-lg" style="color: gray;"></i> <%= TipoCucina.find(ristorante.tipo_cucina_id).nome %></div>
+        <div class="col-auto"><i class="fa-solid fa-clock fa-lg" style="color: black;"></i> <%= ristorante.oraapertura.strftime("%H:%M") %> - <%= ristorante.orachiusura.strftime("%H:%M") %> </div>
       </div>
 
     </div>
@@ -50,16 +30,18 @@
     <div class="" id="ristorantes_menu">
 
       <ul class="h-list-menu">
-        <li><a id="button" class="btn btn-light"  href="#section_descrizione">Descrizione</a></li>
-        <li><a id="button" class="btn btn-light"  href="#section_menu">Menu</a></li>
-        <% if logged_in? %>
+        <li class="hid"><a id="button" class="btn btn-light"  href="#section_descrizione">Descrizione</a></li>
+        <li class="hid"><a id="button" class="btn btn-light"  href="#section_menu">Menu</a></li>
+        <% if user_signed_in? %>
           <li><%= link_to 'Prenota', new_ristorante_prenotazione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
           <li><%= link_to 'Recencisci', new_ristorante_recensione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
         <% else %>
-          <li><%= link_to 'Prenota', login_path ,id:"button" ,class:"btn btn-light" %></li>
-          <li><%= link_to 'Recencisci', login_path ,id:"button" ,class:"btn btn-light" %></li>
+          <li><%= link_to 'Prenota', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
+          <li><%= link_to 'Recencisci', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
         <%end%>
-        <li><a id="button" class="btn btn-light"  href="#section_recensioni">Recensioni</a></li>
+        <li class="hid"><a id="button" class="btn btn-light"  href="#section_recensioni">Recensioni</a></li>
+        <li class="rev"><a id="button" class="btn btn-light"  href="tel:+39<%= ristorante.telefono %>"><i class="fa fa-phone" style="font-size:20px"></i></a></li>
+        <li class="rev"><a id="button" class="btn btn-light"  href="https://www.google.com/maps/dir//<%= ristorante.indirizzo %>,+<%= ristorante.cap %>+<%= ristorante.citta %>+<%= ristorante.provincia %>/@<%= ristorante.latitudine %>,<%= ristorante.longitudine %>/"><i class="fas fa-map-marked-alt" style="font-size:20px"></i></a></li>
       </ul>
 
     </div>
@@ -105,7 +87,7 @@
 
           <div id="section_descrizione">
             <h3 style="font-weight: bold;">DESCRIZIONE</h3>
-            <textarea rows="10" cols="60" readonly><%= ristorante.descrizione %></textarea>            
+            <textarea rows="5" cols="60" readonly><%= ristorante.descrizione %></textarea>            
           </div>
 
           <div id="section_menu">
@@ -125,56 +107,46 @@
             <h3 style="font-weight: bold;">RECENSIONI</h3>
             <div id="section_rec">
               <% Recensione.where(ristorante_id:params[:id]).each do |recensione| %>
-
                 <div class="section_recensione">
                   <div id="borderdiv">
                       <table><tr>
                           <td id="sx_rec">
-                            <%if Utente.find(recensione.utente_id).avatar%><img src=<%= Utente.find(recensione.utente_id).avatar%> alt="Avatar"><%else%><img src="https://drive.google.com/uc?export=view&id=1YvD5yk7EfjT3iovndkMd1vouw6bbNxEc" alt="Avatar"><%end%>
-                            <p style="font-weight: bold;"><%= Utente.find(recensione.utente_id).username %></p>  
-                            <p>rispettibilita'</p>
+                            <%if User.find(recensione.user_id).avatar%><img src=<%= User.find(recensione.user_id).avatar%> alt="Avatar"><%else%><img src="https://drive.google.com/uc?export=view&id=1YvD5yk7EfjT3iovndkMd1vouw6bbNxEc" alt="Avatar"><%end%>
+                            <p style="font-weight: bold;"><%= User.find(recensione.user_id).nome %></p>  
+                            <%#<p>rispettabilita'</p>%>
                           </td>
 
                         <td id="dx_rec">
 
                           <div class="row">
-                            <div class="col-4 m-0 pl-1"><p>valutazione: <%= recensione.valutazione %>/5</p></div>
-                            <div class="col-4 m-0 pl-1"><p>prezzo: <%= recensione.prezzo %>/3</p></div>
-                            <div class="col-4 pr-0">
-                              <% if logged_in? %>
-                                <% likerec=Current.user.like_recensiones.find_by(recensione_id: recensione.id)%>
-                                <% if likerec.nil?%>
-                                  <form action="/like_recensiones" method="post">
-                                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                                    <input type="hidden" name="like_recensione[recensione_id]" value="<%= recensione.id %>">
-                                    <input type="submit" class="btn btnliker" value="Like: <%= recensione.like_recensiones.count%>">
-                                  </form>
-                                <%else%>
-                                  <form action="<%= like_recensione_path(likerec) %>" method="post">
-                                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="submit" class="btn btnliker" value="Unlike: <%= recensione.like_recensiones.count%>">
-                                  </form>
-                                <%end%>
-                              <%else%>
-                                <% strtemp=recensione.like_recensiones.count%>
-                                <%= button_to "Like: #{strtemp}", login_path ,class:"btn btnliker" %>
-                              <%end%>
-                              
+                            <div class="col-4 m-0 pl-1">
+                              <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=1%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=2%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=3%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=4%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=5%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
                             </div>
+                            <div class="col-4 m-0 pl-1">
+                              <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=1%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=2%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+                              <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=3%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+                            </div>
+                            <div class="col-4 pr-0">
+                              <%= render partial: 'ristorante_like_recensione_form', locals: { recensione_id: recensione.id }, as: "likerec_form_#{recensione.id}" %>
+                            </div>
+
                           </div>
 
                           <div class="row">
                             <div class="col-auto m-0  pl-1"><h5 ><%= recensione.titolo %></h5></div>
-                            <div class="col-auto m-0  ml-1"><p>(visitato il <%= recensione.datavisita.strftime("%m/%d/%Y") %>)</p></div>
+                            <div class="col-auto m-0  ml-1  hid"><p>(visitato il <%= recensione.datavisita.strftime("%m/%d/%Y") %>)</p></div>
+                            <div class="col-auto m-0  ml-1 rev"><p style="font-weight: bold;"><%= User.find(recensione.user_id).nome %></p></div>
                           </div>
                           
                           <textarea class="p-0 m-0 pl-1" rows="10" cols="60" readonly><%= recensione.commento %></textarea>
                           
                           <div id="section_rec_img">                 
                             
-                            
-                           
                               <div class="row p-0" id="row-image">
                                 <%if recensione.foto1%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto1%> ></div><%end%>
                                 <%if recensione.foto2%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto2%> ></div><%end%>
@@ -199,7 +171,6 @@
                       </tr></table>
                   </div>
                 </div>
-
               <% end %>
             </div>
           </div>
@@ -211,21 +182,21 @@
           <div id="borderdiv" >
 
             <div id="section_maps">
-              <h5 style="padding-left:2%">Maps</h5>
+              <h5 style="padding-left:2%">Mappa</h5>
               <div id="map"></div>  
             </div>
 
             <div id="section_social">
-              <h5 style="font-weight: bold;">Contatti</h5>
+              <h5 style="font-weight: bold;">Contatta via:</h5>
               <ul class="list-group">
-                <li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="mailto:<%= ristorante.email %>"><%= ristorante.email %></a></li>
+                <li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="mailto:<%= ristorante.email %>" ><%= ristorante.email %></a></li>
                 <li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="tel:+39<%= ristorante.telefono %>">+39<%= ristorante.telefono %></a></li>
-                <% if ristorante.sitoweb1?%><li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb1 %>" ><%= ristorante.sitoweb1 %></a></li><% end %>
-                <% if ristorante.sitoweb2?%><li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb2 %>"><%= ristorante.sitoweb2 %></a></li><% end %>
-                <% if ristorante.sitoweb3?%><li class="list-group-item l-contatti mt-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb3 %>" ><%= ristorante.sitoweb3 %></a></li><% end %>
+                <% if ristorante.sitoweb1?%><li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb1 %>" target="_blank" >Sito principale</a></li><% end %>
+                <% if ristorante.sitoweb2?%><li class="list-group-item l-contatti mt-0 mb-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb2 %>" target="_blank">Sito secondario</a></li><% end %>
+                <% if ristorante.sitoweb3?%><li class="list-group-item l-contatti mt-0 pb-0"><a class="a-contatti" href="<%= ristorante.sitoweb3 %>" target="_blank">Sito terziario</a></li><% end %>
               </ul> 
               <h5 style="font-weight: bold; margin-top:10px">Indicazioni</h5>
-              <a class="l-indicazioni" href="#"><%= ristorante.indirizzo %>, <%= ristorante.citta %></a>
+              <a class="l-indicazioni" href="https://www.google.com/maps/dir//<%= ristorante.indirizzo %>,+<%= ristorante.cap %>+<%= ristorante.citta %>+<%= ristorante.provincia %>/@<%= ristorante.latitudine %>,<%= ristorante.longitudine %>/"><%= ristorante.indirizzo %>, <%= ristorante.citta %></a>
             </div>
 
           </div>
@@ -234,8 +205,24 @@
       </tr></table>
     </div>
 
-    
-
   </div>
 
 </div>
+
+<script>
+$(document).ready(function(){
+    $("#rist #ristorantes_body table #sx_body #section_recensioni #section_rec .section_recensione #borderdiv table #dx_rec #section_rec_img #row-image #colonna img").on("click", function() { //zoom nell'immagine
+        $('#rist #ristorantes_body table #sx_body #section_recensioni #section_rec .section_recensione #borderdiv table #dx_rec #section_rec_img .popup-image').show();
+        $('#rist #ristorantes_body table #sx_body #section_recensioni #section_rec .section_recensione #borderdiv table #dx_rec #section_rec_img .popup-image img').attr("src", $(this).attr("src"));
+    });
+
+    $("#rist #ristorantes_body table #sx_body #section_recensioni #section_rec .section_recensione #borderdiv table #dx_rec #section_rec_img .popup-image span").on("click", function() { //zoom nell'immagine
+        $('#rist #ristorantes_body table #sx_body #section_recensioni #section_rec .section_recensione #borderdiv table #dx_rec #section_rec_img .popup-image').hide();
+    });
+    
+    $('.carousel').carousel({
+        interval: 1000
+    })
+
+  });
+</script>

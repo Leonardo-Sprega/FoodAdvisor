@@ -7,7 +7,7 @@ class CreateRecensiones < ActiveRecord::Migration[7.0]
       t.datetime :datarecensione
       t.integer :valutazione
       t.integer :prezzo
-      t.references :utente, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
       t.references :ristorante, null: false, foreign_key: true
 
       t.timestamps

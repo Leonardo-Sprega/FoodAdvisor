@@ -4,7 +4,7 @@ class RecensionesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @recensione = recensiones(:one)
   end
-
+ 
   test "should get index" do
     get recensiones_url
     assert_response :success
@@ -17,7 +17,7 @@ class RecensionesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create recensione" do
     assert_difference("Recensione.count") do
-      post recensiones_url, params: { recensione: { commento: @recensione.commento, datarecensione: @recensione.datarecensione, datavisita: @recensione.datavisita, prezzo: @recensione.prezzo, ristorante_id: @recensione.ristorante_id, titolo: @recensione.titolo, utente_id: @recensione.utente_id, valutazione: @recensione.valutazione } }
+      post recensiones_url, params: { recensione: { commento: @recensione.commento, datarecensione: @recensione.datarecensione, datavisita: @recensione.datavisita, prezzo: @recensione.prezzo, ristorante_id: @recensione.ristorante_id, titolo: @recensione.titolo, user_id: @recensione.user_id, valutazione: @recensione.valutazione } }
     end
 
     assert_redirected_to recensione_url(Recensione.last)
@@ -34,7 +34,7 @@ class RecensionesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update recensione" do
-    patch recensione_url(@recensione), params: { recensione: { commento: @recensione.commento, datarecensione: @recensione.datarecensione, datavisita: @recensione.datavisita, prezzo: @recensione.prezzo, ristorante_id: @recensione.ristorante_id, titolo: @recensione.titolo, utente_id: @recensione.utente_id, valutazione: @recensione.valutazione } }
+    patch recensione_url(@recensione), params: { recensione: { commento: @recensione.commento, datarecensione: @recensione.datarecensione, datavisita: @recensione.datavisita, prezzo: @recensione.prezzo, ristorante_id: @recensione.ristorante_id, titolo: @recensione.titolo, user_id: @recensione.user_id, valutazione: @recensione.valutazione } }
     assert_redirected_to recensione_url(@recensione)
   end
 

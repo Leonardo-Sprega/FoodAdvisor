@@ -1,7 +1,7 @@
 class PiattosController < ApplicationController
   before_action :set_piatto, only: %i[ show edit update destroy ]
   before_action :has_ristorante
-
+  
   # GET /piattos or /piattos.json
   def index
     @piattos = Piatto.all

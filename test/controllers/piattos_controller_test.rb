@@ -4,7 +4,7 @@ class PiattosControllerTest < ActionDispatch::IntegrationTest
   setup do
     @piatto = piattos(:one)
   end
-
+  
   test "should get index" do
     get piattos_url
     assert_response :success

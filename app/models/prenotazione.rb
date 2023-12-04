@@ -1,4 +1,4 @@
 class Prenotazione < ApplicationRecord
-  belongs_to :utente
+  belongs_to :user
   belongs_to :ristorante
 end

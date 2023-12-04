@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+    
     def index
         @results = search_for_ristorante
 

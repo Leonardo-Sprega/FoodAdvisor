@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_234736) do
   create_table "foto_ristorantes", force: :cascade do |t|
     t.string "url"
     t.integer "ristorante_id", null: false
@@ -19,27 +19,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
     t.index ["ristorante_id"], name: "index_foto_ristorantes_on_ristorante_id"
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "like_recensiones", force: :cascade do |t|
     t.integer "recensione_id", null: false
-    t.integer "utente_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recensione_id"], name: "index_like_recensiones_on_recensione_id"
-    t.index ["utente_id"], name: "index_like_recensiones_on_utente_id"
+    t.index ["user_id"], name: "index_like_recensiones_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer "ristorante_id", null: false
-    t.integer "utente_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ristorante_id"], name: "index_likes_on_ristorante_id"
-    t.index ["utente_id"], name: "index_likes_on_utente_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "piattos", force: :cascade do |t|
@@ -62,22 +57,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
     t.integer "nadulti"
     t.integer "nbambini"
     t.text "messaggio"
-    t.integer "utente_id", null: false
+    t.integer "user_id", null: false
     t.integer "ristorante_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ristorante_id"], name: "index_prenotaziones_on_ristorante_id"
-    t.index ["utente_id"], name: "index_prenotaziones_on_utente_id"
+    t.index ["user_id"], name: "index_prenotaziones_on_user_id"
   end
 
   create_table "recensiones", force: :cascade do |t|
     t.string "titolo"
     t.text "commento"
     t.datetime "datavisita"
-    t.datetime "datarecensione"
     t.integer "valutazione"
     t.integer "prezzo"
-    t.integer "utente_id", null: false
+    t.integer "user_id", null: false
     t.integer "ristorante_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
     t.string "foto5"
     t.string "foto6"
     t.index ["ristorante_id"], name: "index_recensiones_on_ristorante_id"
-    t.index ["utente_id"], name: "index_recensiones_on_utente_id"
+    t.index ["user_id"], name: "index_recensiones_on_user_id"
   end
 
   create_table "ristorantes", force: :cascade do |t|
@@ -106,13 +100,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
     t.text "descrizione"
     t.time "oraapertura"
     t.time "orachiusura"
+    t.integer "tipo_cucina_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "utente_id", null: false
-    t.integer "tipo_cucina_id"
     t.string "latitudine"
     t.string "longitudine"
-    t.index ["utente_id"], name: "index_ristorantes_on_utente_id"
+    t.integer "user_id", null: false
+    t.index ["tipo_cucina_id"], name: "index_ristorantes_on_tipo_cucina_id"
+    t.index ["user_id"], name: "index_ristorantes_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "tipo_cucinas", force: :cascade do |t|
@@ -122,29 +126,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_134058) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "utentes", force: :cascade do |t|
-    t.string "username"
-    t.string "nome"
-    t.string "cognome"
-    t.string "cap_regione"
-    t.integer "telefono"
-    t.string "email"
-    t.string "password_digest"
-    t.string "avatar"
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "ristoratore"
+    t.string "provider", limit: 50, default: "", null: false
+    t.string "uid", limit: 500, default: "", null: false
+    t.string "nome", limit: 50, default: "", null: false
+    t.string "cognome", limit: 50, default: "", null: false
+    t.string "citta", limit: 50, default: "", null: false
+    t.string "provincia", limit: 50, default: "", null: false
+    t.string "cap", limit: 10, default: "", null: false
+    t.string "ristoratore", limit: 10, default: "No", null: false
+    t.string "avatar", limit: 500, default: "", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "foto_ristorantes", "ristorantes"
   add_foreign_key "like_recensiones", "recensiones"
-  add_foreign_key "like_recensiones", "utentes"
+  add_foreign_key "like_recensiones", "users"
   add_foreign_key "likes", "ristorantes"
-  add_foreign_key "likes", "utentes"
+  add_foreign_key "likes", "users"
   add_foreign_key "piattos", "ristorantes"
   add_foreign_key "prenotaziones", "ristorantes"
-  add_foreign_key "prenotaziones", "utentes"
+  add_foreign_key "prenotaziones", "users"
   add_foreign_key "recensiones", "ristorantes"
-  add_foreign_key "recensiones", "utentes"
-  add_foreign_key "ristorantes", "utentes"
+  add_foreign_key "recensiones", "users"
+  add_foreign_key "ristorantes", "tipo_cucinas"
+  add_foreign_key "ristorantes", "users"
 end

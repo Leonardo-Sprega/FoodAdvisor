@@ -1,6 +1,7 @@
 class PrenotazionesController < ApplicationController
   before_action :set_prenotazione, only: %i[ show edit update destroy ]
-  before_action :has_ristorante_and_utente, :only => [:new, :create ]
+  before_action :has_ristorante_and_user, :only => [:new, :create ]
+
 
   # GET /prenotaziones or /prenotaziones.json
   def index
@@ -25,10 +26,10 @@ class PrenotazionesController < ApplicationController
     @prenotazione = Prenotazione.new(prenotazione_params)
     
     @rist=Ristorante.find_by(id:params[:ristorante_id])
-    @ut=Utente.find_by(id: session[:user_id])
+    @ut=User.find_by(id: current_user.id)
 
     @prenotazione.ristorante_id = params[:ristorante_id]
-    @prenotazione.utente_id= session[:user_id]
+    @prenotazione.user_id= current_user.id
     #@current_user.prenotazione << @prenotazione
     @ut.prenotaziones << @prenotazione
     @rist.prenotaziones << @prenotazione
@@ -75,14 +76,14 @@ class PrenotazionesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prenotazione_params
-      params.require(:prenotazione).permit(:ora, :data, :nomecliente, :cognomecliente, :telefonocliente, :emailcliente, :nadulti, :nbambini, :messaggio, :utente_id, :ristorante_id)
+      params.require(:prenotazione).permit(:ora, :data, :nomecliente, :cognomecliente, :telefonocliente, :emailcliente, :nadulti, :nbambini, :messaggio, :user_id, :ristorante_id)
     end
 
   protected
-  def has_ristorante_and_utente
-    unless Current.user
-      flash[:warning] = 'You must be logged in to create a review.'
-      redirect_to ristorante_path
+  def has_ristorante_and_user
+    if !user_signed_in?
+      flash[:warning] = 'Devi accedere con il tuo account'
+      redirect_to new_user_session_path
     end
     unless (@ristorante = Ristorante.where(:id => params[:ristorante_id]).first)
       flash[:warning] = 'Review must be for an existing movie.'

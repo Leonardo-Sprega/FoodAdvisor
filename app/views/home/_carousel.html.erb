@@ -1,25 +1,25 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "carousel" %>
+<% end %>
 
-<div class="carousel-container">
-  <div class="inner-carousel">
-    <div class="track">
+
+
+
+<div class="my-slider">
+
     <% @ristorantes.where("").each do |ristorante| %>
     <%= link_to ristorante do%>
       <div class="card-container">
-        <div class="card" id="cards">
 
         <img src="<%= ristorante.foto_ristorantes.first.url %>" alt="..." width="100%" height="100%" class="imagini">
-        <div class="card-img-overlay d-flex flex-column justify-content-end">
-          <h5 class="card-title"><%= ristorante.nome.titleize %></h5>
-        </div>
-        
-        </div>
+
       </div>
       <% end %>
     <% end %>
-    </div>
-    <div class="navigation">
-      <button class="prev"><i class="fas fa-arrow-left fa-2x"></i></button>
-      <button class="next"><i class="fas fa-arrow-right fa-2x"></i></button>
-    </div>
-  </div>
 </div>
+
+
+  <div class="carouselBtns">
+    <span class="clickable1"><i class="fa-solid fa-circle-chevron-left fa-2xl"></i></span>
+    <span class="clickable2"><i class="fa-solid fa-circle-chevron-right fa-2xl"></i></span>
+  </div>

@@ -5,6 +5,8 @@ class FotoRecensionesControllerTest < ActionDispatch::IntegrationTest
     @foto_recensione = foto_recensiones(:one)
   end
 
+  
+
   test "should get index" do
     get foto_recensiones_url
     assert_response :success

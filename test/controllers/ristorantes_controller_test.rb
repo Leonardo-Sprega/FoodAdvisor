@@ -4,7 +4,7 @@ class RistorantesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @ristorante = ristorantes(:one)
   end
-
+  
   test "should get index" do
     get ristorantes_url
     assert_response :success

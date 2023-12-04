@@ -4,7 +4,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @like = likes(:one)
   end
-
+  
   test "should get index" do
     get likes_url
     assert_response :success
@@ -17,7 +17,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create like" do
     assert_difference("Like.count") do
-      post likes_url, params: { like: { ristorante_id: @like.ristorante_id, utente_id: @like.utente_id } }
+      post likes_url, params: { like: { ristorante_id: @like.ristorante_id, user_id: @like.user_id } }
     end
 
     assert_redirected_to like_url(Like.last)
@@ -34,7 +34,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update like" do
-    patch like_url(@like), params: { like: { ristorante_id: @like.ristorante_id, utente_id: @like.utente_id } }
+    patch like_url(@like), params: { like: { ristorante_id: @like.ristorante_id, user_id: @like.user_id } }
     assert_redirected_to like_url(@like)
   end
 

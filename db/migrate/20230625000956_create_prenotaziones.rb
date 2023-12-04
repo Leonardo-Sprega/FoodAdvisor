@@ -10,7 +10,7 @@ class CreatePrenotaziones < ActiveRecord::Migration[7.0]
       t.integer :nadulti
       t.integer :nbambini
       t.text :messaggio
-      t.references :utente, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
       t.references :ristorante, null: false, foreign_key: true
 
       t.timestamps

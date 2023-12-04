@@ -1,79 +1,73 @@
 
-.null{
-    height: 100px;
-}
 
-.register_alert{
-    margin: auto;
-    text-align: center;
-    padding: 25px 25px;
-    width: 25%;
-    background-color: rgba(255, 0, 0, 0.382);
-    border-radius: 10px;
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-
-.form_register{
-    text-align: center;
-    display: block;
-    margin: auto;
-
+.alert{
+    background-color: rgba(255, 0, 0, 0.508);
+    font-size: 20px;
+    font-weight: 400;
     width: 35%;
-
-    border: 1px solid black;
-    border-radius: 10px;
-
-    margin-bottom: 50px;
-    padding-bottom: 10px;
+    margin: auto;
 }
+
 
 .titolo_form{
     font-size: 40px;
     font-weight: 600;
-    margin-top: 5px;
+    margin-top: 150px;
     margin-bottom: 5px;
+    text-align: center;
 }
 
-.parte-centrale{
+
+.form_register{
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+
+    background-color: white;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+
+    border: 2px solid black;
+    border-radius: 10px;
+
 }
 
 
 .register-label{
     margin-top: 20px;
+    margin-bottom: 2%;
     font-size: 20px;
 }
 .register-label-2{
     font-size: 12px;
     font-style: italic;
 }
-
+.ristoratore-label{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
 .register-text{
-    width: 75%;
-    height: 40px;
     text-align: center;
-    border-radius: 10px;
 }
-
-.register-text-avatar{
-    width: 30%;
-    height: 40px;
-    border-radius: 10px;
-}
-
-.button-submit{
-    margin-top: 20px;
-}
-
-.button-back{
-    margin-top: 20px;
-    margin-bottom: 10px;
-
-}
-
 .nav-btn{
-    text-decoration: none;
+    text-decoration: none; 
 }
+.register-null{
+    height: 20px;
+}
+
+.parte-dx{
+    height: 100%;
+    background-color: rgb(255, 242, 217);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+.parte-dx-provider{
+    margin-top: 96%;
+}
+
+
+

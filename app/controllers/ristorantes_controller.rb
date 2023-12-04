@@ -1,6 +1,6 @@
 class RistorantesController < ApplicationController
   before_action :set_ristorante, only: %i[ show edit update destroy ]
-  before_action :has_utente, :only => [:new, :create, :edit,:update ,:destroy]
+  before_action :has_user, :only => [:new, :create, :edit,:update ,:destroy]
 
   # GET /ristorantes or /ristorantes.json
   def index
@@ -27,8 +27,8 @@ class RistorantesController < ApplicationController
   # POST /ristorantes or /ristorantes.json
   def create
     @ristorante = Ristorante.new(ristorante_params)
-    @ristorante.utente_id= session[:user_id]
-    #prende l'id dell'utente tramite i parametri della sessione
+    @ristorante.user_id= current_user.id
+    #prende l'id dell' tramite i parametri della sessione
     #o ti fara creare un account prima del ristorante  
     
 
@@ -74,11 +74,11 @@ class RistorantesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ristorante_params
-      params.require(:ristorante).permit(:nome, :regione, :provincia, :citta, :indirizzo, :cap, :email, :telefono, :sitoweb1, :sitoweb2, :sitoweb3, :descrizione, :oraapertura, :orachiusura,:latitudine,:longitudine,:utente_id ,:tipo_cucina_id, foto_ristorantes_attributes:[ :id, :url, :_destroy], piattos_attributes:[ :id,:nome, :descrizione,:prezzo, :_destroy] )
+      params.require(:ristorante).permit(:nome, :regione, :provincia, :citta, :indirizzo, :cap, :email, :telefono, :sitoweb1, :sitoweb2, :sitoweb3, :descrizione, :oraapertura, :orachiusura,:latitudine,:longitudine,:user_id ,:tipo_cucina_id, foto_ristorantes_attributes:[ :id, :url, :_destroy], piattos_attributes:[ :id,:nome, :descrizione,:prezzo, :_destroy] )
     end
 
     protected
-    def has_utente
+    def has_user
       #unless @current_user
       #  flash[:warning] = 'You must be logged in to create a ristorante.'
       #  redirect_to ristorantes_path

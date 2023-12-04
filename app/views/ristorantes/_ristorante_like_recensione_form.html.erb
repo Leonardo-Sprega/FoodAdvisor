@@ -1,0 +1,29 @@
+<%= turbo_frame_tag "likerec_form_#{recensione_id}"  do%>
+    <div>
+        <% rec=Recensione.find_by(id: recensione_id)%>
+        <% if user_signed_in? %>
+            <% likerec=current_user.like_recensiones.find_by(recensione_id: rec.id)%>
+            <% if likerec.nil?%>
+                <form action="/like_recensiones" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="like_recensione[recensione_id]" value="<%= rec.id %>">
+                <button type="submit"  class="btn btnliker">
+                    <i class='fa-solid fa-thumbs-up fa-lg' style='color: #A1CED8;'></i> <%= rec.like_recensiones.count%>
+                </button>
+                </form>
+            <%else%>
+                <form action="<%= like_recensione_path(likerec) %>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit"  class="btn btnliker">
+                    <i class='fa-solid fa-thumbs-up fa-lg' style='color: #A1CED8;'></i> <%= rec.like_recensiones.count%>
+                </button>
+                </form>
+            <%end%>
+        <%else%>
+            <%= button_to new_user_session_path, method: :get,class:"btn btnliker"  do%>
+                <i class='fa-solid fa-thumbs-up fa-lg' style='color: #A1CED8;'></i><%= rec.like_recensiones.count%> 
+            <%end%>
+        <%end%>
+    </div>
+<%end%>

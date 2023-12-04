@@ -1,11 +1,4 @@
-body{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-#rist{
+#rist {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -22,23 +15,54 @@ body{
     color: black;
 }
 
-#rist #ristorantes_info .btnlike{
-    background-color: orange;
+#rist #ristorantes_info .btnlike {
+    background-color: white;
     color: white;
     font-weight: bold;
     margin-top: 4px;
 }
 
-#rist #ristorantes_info .btnlike:hover{
+#rist #ristorantes_info .btnlike:hover {
     color: black;
 }
 
-#rist #ristorantes_info #textcons{
+#rist #ristorantes_info #textcons {
     background-color: white;
     color: black;
     margin-top: 20px;
 }
 
+#rist #ristorantes_info .icon-heart {
+    font-size: 24px;
+    color: red;
+}
+
+#rist #ristorantes_info .rev {
+    display: none;
+}
+
+@media screen and (max-width: 780px) {
+    #rist #ristorantes_info .icon-heart {
+        font-size: 40px;
+    }
+
+    #rist #ristorantes_info .hid {
+        display: none;
+    }
+
+    #rist #ristorantes_info .rev {
+        display: block;
+        background-color: white;
+        color: black;
+        margin-top: -35px;
+        margin-left: 0px;
+        font-size: large;
+    }
+
+    #rist #ristorantes_info .btnlike {
+        margin-top: -10px;
+    }
+}
 
 /* body della pagina */
 #rist #ristorantes_body {
@@ -50,13 +74,13 @@ body{
     margin-top: 70px;
 }
 
-#rist #ristorantes_body table{
+#rist #ristorantes_body table {
     width: 100%;
     height: 100%;
     color: black;
     padding: 0;
     margin: 0;
-    margin-bottom:60px;
+    margin-bottom: 60px;
 }
 
 /* parte sx del body della pagina */
@@ -103,8 +127,7 @@ body{
     color: black;
     height: min-content;
     margin: 0;
-    margin-top: 40px;
-
+    margin-top: 30px;
 }
 
 #rist #ristorantes_body table #sx_body #section_menu #sec_menu {
@@ -116,7 +139,7 @@ body{
     padding-left: 5%;
 }
 
-#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto{
+#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto {
     width: 100%;
     color: black;
     height: auto;
@@ -125,7 +148,7 @@ body{
     padding: 0;
 }
 
-#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto .row h5{
+#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto .row h5 {
     color: black;
     font-weight: bold;
     font-style: italic;
@@ -134,21 +157,20 @@ body{
     padding: 0;
 }
 
-#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto .row p{
+#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto .row p {
     color: black;
     font-weight: lighter;
     margin: 0;
     padding: 0;
 }
 
-#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto  p{
+#rist #ristorantes_body table #sx_body #section_menu #sec_menu #sec_piatto p {
     color: black;
     font-style: italic;
     margin: 0;
     padding: 0;
     padding-left: 4%;
 }
-
 
 /* parte dx del body della pagina */
 #rist #ristorantes_body table #dx_body {
@@ -160,9 +182,21 @@ body{
     padding-top: 1%;
     color: black;
     margin: 0;
-    vertical-align:top;
+    vertical-align: top;
     background-color: white;
 }
+
+@media screen and (max-width: 700px) {
+    #rist #ristorantes_body table #dx_body{
+        display: none;
+    }
+
+    #rist #ristorantes_body table #sx_body{
+        width: 100%;
+    }
+}
+
+
 
 /* parte dx del body-->blocco totale */
 #rist #ristorantes_body table #dx_body #borderdiv {
@@ -186,15 +220,15 @@ body{
     margin: 0;
 }
 
-#rist #ristorantes_body table #dx_body #borderdiv #section_maps #map{
-    background-color: whitesmoke; 
+#rist #ristorantes_body table #dx_body #borderdiv #section_maps #map {
+    background-color: whitesmoke;
     width: 100%;
-    height:88%;
+    height: 88%;
     padding: 0;
 }
 
 /* parte dx del body-->blocco totale-->sezione contatti */
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social {
+#rist #ristorantes_body table #dx_body #borderdiv #section_social {
     width: 100%;
     height: min-content;
     color: black;
@@ -202,33 +236,32 @@ body{
     margin-bottom: 10px;
 }
 
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social .l-contatti{
+#rist #ristorantes_body table #dx_body #borderdiv #section_social .l-contatti {
     width: 100%;
     color: black;
     background-color: whitesmoke;
     border: 0;
 }
 
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social .l-contatti .a-contatti{
+#rist #ristorantes_body table #dx_body #borderdiv #section_social .l-contatti .a-contatti {
     width: 100%;
     text-decoration-line: none;
     text-decoration: none;
     color: black;
 }
 
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social .l-contatti .a-contatti:hover{
+#rist #ristorantes_body table #dx_body #borderdiv #section_social .l-contatti .a-contatti:hover {
     color: orange;
     text-decoration-line: none;
 }
 
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social .l-indicazioni{
+#rist #ristorantes_body table #dx_body #borderdiv #section_social .l-indicazioni {
     width: 100%;
     color: black;
     text-decoration-line: none;
     margin-left: 7%;
 }
 
-#rist #ristorantes_body table #dx_body  #borderdiv #section_social .l-indicazioni:hover{
+#rist #ristorantes_body table #dx_body #borderdiv #section_social .l-indicazioni:hover {
     color: orange;
 }
-

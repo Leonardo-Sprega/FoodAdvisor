@@ -4,7 +4,7 @@ class FotoRistorantesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @foto_ristorante = foto_ristorantes(:one)
   end
-
+  
   test "should get index" do
     get foto_ristorantes_url
     assert_response :success

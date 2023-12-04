@@ -16,7 +16,7 @@
 
         <div class="form-group ">
           <label> Data Visita </label>
-          <%= date_field_tag 'recensione[datavisita]', nil ,class:"form-control", required: true %>
+          <%= date_field_tag 'recensione[datavisita]', nil ,class:"form-control", max: Date.today, required: true %>
         </div>
 
         <div class="form-group ">
@@ -73,10 +73,9 @@
       <% end %>
 
     <div id="div-back">
-      <%= link_to 'Back', home_index_path %>
+        <%= link_to 'Back', @ristorante %>
     </div>
   </div>
-
 
 
 

@@ -4,7 +4,7 @@ class LikeRecensionesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @like_recensione = like_recensiones(:one)
   end
-
+ 
   test "should get index" do
     get like_recensiones_url
     assert_response :success
@@ -17,7 +17,7 @@ class LikeRecensionesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create like_recensione" do
     assert_difference("LikeRecensione.count") do
-      post like_recensiones_url, params: { like_recensione: { recensione_id: @like_recensione.recensione_id, utente_id: @like_recensione.utente_id } }
+      post like_recensiones_url, params: { like_recensione: { recensione_id: @like_recensione.recensione_id, user_id: @like_recensione.user_id } }
     end
 
     assert_redirected_to like_recensione_url(LikeRecensione.last)
@@ -34,7 +34,7 @@ class LikeRecensionesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update like_recensione" do
-    patch like_recensione_url(@like_recensione), params: { like_recensione: { recensione_id: @like_recensione.recensione_id, utente_id: @like_recensione.utente_id } }
+    patch like_recensione_url(@like_recensione), params: { like_recensione: { recensione_id: @like_recensione.recensione_id, user_id: @like_recensione.user_id } }
     assert_redirected_to like_recensione_url(@like_recensione)
   end
 

@@ -48,7 +48,7 @@ class FotoRistorantesController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /foto_ristorantes/1 or /foto_ristorantes/1.json
   def destroy
     @foto_ristorante.destroy

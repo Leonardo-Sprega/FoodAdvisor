@@ -1,6 +1,7 @@
 class RecensionesController < ApplicationController
   before_action :set_recensione, only: %i[ show edit update destroy ]
-  before_action :has_ristorante_and_utente, :only => [:new, :create, :show]
+  before_action :has_ristorante_and_user, :only => [:new, :create, :show]
+
 
   # GET /recensiones or /recensiones.json
   def index
@@ -10,7 +11,7 @@ class RecensionesController < ApplicationController
   # GET /recensiones/1 or /recensiones/1.json
   def show
   end
-
+  
   # GET /recensiones/new
   def new
     @recensione = Recensione.new
@@ -25,10 +26,10 @@ class RecensionesController < ApplicationController
     @recensione = Recensione.new(recensione_params)
 
     @rist=Ristorante.find_by(id:params[:ristorante_id])
-    @ut=Utente.find_by(id: session[:user_id])
+    @ut=User.find_by(id:current_user.id)
 
     @recensione.ristorante_id = params[:ristorante_id]
-    @recensione.utente_id= session[:user_id]
+    @recensione.user_id= current_user.id
 
     #@current_user.recensione << @recensione
     @ut.recensiones << @recensione
@@ -76,15 +77,15 @@ class RecensionesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recensione_params
-      params.require(:recensione).permit(:titolo, :commento, :datavisita, :datarecensione, :valutazione, :prezzo, :foto1, :foto2, :foto3, :foto4, :foto5, :foto6, :utente_id, :ristorante_id, )
+      params.require(:recensione).permit(:titolo, :commento, :datavisita, :datarecensione, :valutazione, :prezzo, :foto1, :foto2, :foto3, :foto4, :foto5, :foto6, :user_id, :ristorante_id, )
     end
   
   protected
-  def has_ristorante_and_utente
-    #unless @current_user
-      #flash[:warning] = 'You must be logged in to create a review.'
-      #redirect_to movies_path
-    #end
+  def has_ristorante_and_user
+    if !user_signed_in?
+      flash[:warning] = 'Devi accedere con il tuo account'
+      redirect_to new_user_session_path
+    end
     unless (@ristorante = Ristorante.where(:id => params[:ristorante_id]).first)
       flash[:warning] = 'Review must be for an existing movie.'
       redirect_to ristorante_path

@@ -4,7 +4,7 @@ class TipoCucinasControllerTest < ActionDispatch::IntegrationTest
   setup do
     @tipo_cucina = tipo_cucinas(:one)
   end
-
+  
   test "should get index" do
     get tipo_cucinas_url
     assert_response :success

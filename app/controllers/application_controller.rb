@@ -1,32 +1,23 @@
 class ApplicationController < ActionController::Base
-    before_action :set_current_user
-	
-	protected
-	def set_current_user
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
-		if session[:user_id]
-			Current.user = Utente.find_by(id: session[:user_id])
-		end
-		 
-		# we exploit the fact that the below query may return nil
-		# @current_user = Utente.where(:id => 2).first
-		# redirect_to ristorantes_path and return unless @current_user
-		
-	end
+    protected
+  
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:nome])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:cognome])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:ristoratore])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:citta])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:cap])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:provincia])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
 
-	helper_method :logged_in?, :current_user
-
-	def current_user
-		if session[:user_id]
-		@user = Utente.find(session[:user_id])
-		end
-	end
-
-	def logged_in?
-		!!current_user
-	end
-
-	def authorized
-		#redirect_to login_path unless logged_in?
-  	end
+      devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:cognome])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:ristoratore])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:citta])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:cap])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:provincia])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+    end
 end
