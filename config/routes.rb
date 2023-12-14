@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
+  
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth',
+                                  passwords: 'passwords/passwords', 
+                                  sessions: 'passwords/sessions',
+                                  registrations: 'passwords/registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+ 
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
@@ -19,6 +25,8 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/contact_us', to: 'pages#contact_us'
 
+  
+  
   resources :profilo
   resources :login
   resources :home

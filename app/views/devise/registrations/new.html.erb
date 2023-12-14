@@ -1,86 +1,178 @@
 
+
+
+<% if $messaggio_notizia.present? %>
+  <% flash[:notizia] = $messaggio_notizia %>
+  <% $messaggio_notizia = nil %>
+<% end %>
+
+<% if $messaggio_errore.present? %>
+  <% flash[:alert] = $messaggio_errore %>
+  <% $messaggio_errore = nil %>
+<% end %>
+
 <div class = "titolo_form">
   Registrati
+  <% flash.each do |key, value| %>
+    <div class="<%= key %>"><%= value %></div>
+  <% end %>
 </div>
 
 
-<div class = "form_register">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class = "parte-sx"> 
+    <div class = "form_register">
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class = "prima_parte">
 
-      <div class="field register-label" >
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "register-text"%>
+        <div class = "parte_sopra">
+
+          <div class = "parte-sx"> 
+
+            <div class="field register-label" >
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "register-text"%>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :password %><br>
+              
+              <%= f.password_field :password, autocomplete: "new-password", class: "register-text pass_color", id: "password" , oninput: "validator()"%>
+              <div class="contenitore-barra">
+              </div>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :conferma_password %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "register-text" %>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :nome %><br />
+              <%= f.text_field :nome, class: "register-text" %>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :cognome %><br />
+              <%= f.text_field :cognome, class: "register-text" %>
+            </div>
+
+          </div>
+
+          <div class = "parte-dx">
+          
+            <div class="field register-label">
+              <%= f.label :citta %><br />
+              <%= f.text_field :citta , class: "register-text"%>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :cap %><br />
+              <%= f.number_field :cap , class: "register-text"%>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :provincia %><br />
+              <%= f.text_field :provincia, class: "register-text" %>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :avatar %><br />
+              <%= f.text_field :avatar, class: "register-text" %>
+            </div>
+
+            <div class="field register-label">
+              <%= f.label :ristoratore %><br />
+              <%= f.select :ristoratore, options_for_select([["No",false] , ["Si",true]]), prompt: "Sei un ristoratore?", class: "register-text" ,selected: 0 ,required: true  %>
+            </div>
+        
+          </div>
+
+        </div>
+
+        <div class = "parte_sotto">
+
+          <div class = "register-label-2 testo_password">
+            PASSWORD <br> Inserire almeno: <br> 1 cifra, 1 Maiuscola, 1 minuscola,
+            1 carattere speciale <br> 8 caratteri minimo
+          </div>
+          
+          <br>
+
+
+          <div class="actions">
+            <%= f.submit "Registrati", class: "nav-btn "  %>
+          </div>
+        </div>
+
       </div>
 
-      <div class="field register-label">
-        <%= f.label :password %>
-        <br />
-        <% if @minimum_password_length %>
-        <em class = "register-label-2">(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "register-text" %>
+      <div class = "seconda_parte">
+        <div class = "testo_provider">
+          Oppure, Registrati con:
+        </div>
+          <%= render "devise/shared/links" %>
       </div>
 
-      <div class="field register-label">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "register-text" %>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :nome %><br />
-        <%= f.text_field :nome, class: "register-text" %>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :cognome %><br />
-        <%= f.text_field :cognome, class: "register-text" %>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :citta %><br />
-        <%= f.text_field :citta , class: "register-text"%>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :cap %><br />
-        <%= f.number_field :cap , class: "register-text"%>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :provincia %><br />
-        <%= f.text_field :provincia, class: "register-text" %>
-      </div>
-
-      <div class="field register-label">
-        <%= f.label :avatar %><br />
-        <%= f.text_field :avatar, class: "register-text" %>
-      </div>
-
-      <div class="field ristoratore-label">
-        <%= f.label :ristoratore %><br />
-        <%= f.select :ristoratore, options_for_select([["No",false] , ["Si",true]]), prompt: "Sei un ristoratore?", class: "register-text" ,selected: 0 ,required: true  %>
-      </div>
-
-            
-      <div class="actions">
-        <%= f.submit "Registrati", class: "nav-btn "  %>
-      </div>
-    <% end %>
-
-    <div class = "register-null">
     </div>
 
-  </div>
+  
 
-  <div class = "parte-dx">
-    <div class = "parte-dx-provider">
-      <%= render "devise/shared/links" %>
-    </div>
-  </div>
+<% end %>
 
-</div>
+ 
+
+
+
+
+
+
+
+
+<script>
+  function validator() {
+    var x = 0;
+    var password = document.getElementById('password').value;
+    var bar = document.getElementById("password");
+
+    //controllo numeri
+    var check=/[0-9]/;
+    if(check.test(password)){
+      x += 20;
+    }
+    //controllo minuscole
+    var check2=/[a-z]/;
+    if(check2.test(password)){
+        x += 20;
+    }
+    //controllo maiuscole
+    var check3=/[A-Z]/;
+    if(check3.test(password)){
+        x += 20;
+    }
+    //controllo simboli
+    var check4=/[$-/:-?{-~!"^_`\[\]]/;
+    if(check4.test(password)){
+        x += 20;
+    }
+    // controllo lunghezza (minore o uguale a 10 caratteri)
+    if(password.length >= 8){
+        x += 20;
+    }
+  
+
+    if (x == 100) {
+      bar.style.backgroundColor = "rgba(0, 255, 0, 0.673)";
+    }
+    if (x <= 80) {
+        bar.style.backgroundColor = "rgba(255, 166, 0, 0.659)";
+      }
+    if (x <=60) {
+      bar.style.backgroundColor = "rgba(255, 0, 0, 0.258)";
+    }
+    if (x == 0) {
+      bar.style.backgroundColor = "";
+    }
+  }
+</script>

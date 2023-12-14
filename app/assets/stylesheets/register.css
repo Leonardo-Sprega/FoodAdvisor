@@ -1,5 +1,17 @@
 
 
+.notizia{
+    background-color: rgba(0, 255, 119, 0.601);
+    font-size: 20px;
+    font-weight: 400;
+    width: 35%;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
 .alert{
     background-color: rgba(255, 0, 0, 0.508);
     font-size: 20px;
@@ -7,7 +19,6 @@
     width: 35%;
     margin: auto;
 }
-
 
 .titolo_form{
     font-size: 40px;
@@ -18,21 +29,61 @@
 }
 
 
+
 .form_register{
-
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    align-items: center;
+    grid-template-rows: 2.5fr 1fr ;
 
-    background-color: white;
-    text-align: center;
     margin: auto;
     width: 50%;
 
     border: 2px solid black;
     border-radius: 10px;
+}
+
+
+.prima_parte{
+    display: grid;
+    grid-template-rows: 3fr 1fr ;
+
 
 }
+.seconda_parte{
+    text-align: center;
+    background-color: rgb(255, 242, 217);
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+
+
+.parte_sopra{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+
+    text-align: center;
+    margin: auto;
+    width: 100%;
+
+
+}
+.parte_sotto{
+    display: block;
+
+    margin: auto;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+
 
 
 .register-label{
@@ -44,30 +95,41 @@
     font-size: 12px;
     font-style: italic;
 }
-.ristoratore-label{
-    margin-top: 10%;
-    margin-bottom: 10%;
-}
 .register-text{
     text-align: center;
 }
 .nav-btn{
     text-decoration: none; 
 }
-.register-null{
-    height: 20px;
+
+.testo_password{
+    margin-top: 15px;
 }
 
-.parte-dx{
-    height: 100%;
-    background-color: rgb(255, 242, 217);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
+.testo_provider{
+    font-size: 30px;
+    margin: 15px;
 }
-.parte-dx-provider{
-    margin-top: 96%;
+
+
+.oauth-providers {
+    display: flex;
+    width: 34%;
+    margin: auto;
+    gap: 50px; /* Puoi regolare la distanza tra i pulsanti */
 }
+.oauth-providers-2{
+    display: block;
+    text-align: center;
+}
+.contenitore-barra{
+    margin: auto;
+    width: 62%;
+}
+
+
+
+
 
 
 
