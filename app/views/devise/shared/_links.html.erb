@@ -25,17 +25,18 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
+  <div class="oauth-providers">   
+    <%- resource_class.omniauth_providers.each do |provider| %>
 
-    <%= form_for "Login",
-      url: omniauth_authorize_path(resource_name, provider),
-      method: :post,
-      data: {turbo: "false"} do |f| %>
-        <%= f.submit "Login", type: "image" , src: url_for("/assets/#{provider}.png") %>
-        <div> <%=@dove%> con <%=provider%></div>
-        <br/>
-      <% end %>
-  <% end %>
-
-
+      <%= form_for "Login",
+        url: omniauth_authorize_path(resource_name, provider),
+        method: :post,
+        data: {turbo: "false"} do |f| %>
+          <div class="oauth-providers-2"> 
+            <%= f.submit "Login", type: "image" , src: url_for("/assets/#{provider}.png") %>
+            <div> <%=@dove%> con <%=provider%></div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
 <% end %>

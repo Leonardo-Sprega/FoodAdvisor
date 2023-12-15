@@ -1,7 +1,22 @@
 
 
+
+<% if $messaggio_notizia.present? %>
+  <% flash[:notizia] = $messaggio_notizia %>
+  <% $messaggio_notizia = nil %>
+<% end %>
+
+<% if $messaggio_errore.present? %>
+  <% flash[:alert] = $messaggio_errore %>
+  <% $messaggio_errore = nil %>
+<% end %>
+
+
 <div class = "titolo_form">
-  Forgot your password?
+  Reimposta la Password
+  <% flash.each do |key, value| %>
+    <div class="<%= key %>"><%= value %></div>
+  <% end %>
 </div>
 
 <div class = "form_register">
@@ -17,7 +32,8 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Send me reset password instructions",class: "nav-btn " %>
+        <div class = "register-label-2"> verrà inviata un'email con il link per reimpostare la password</div>
+        <%= f.submit "invia email",class: "nav-btn " %>
       </div>
     <% end %>
   

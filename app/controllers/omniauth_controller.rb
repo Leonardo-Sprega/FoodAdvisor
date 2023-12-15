@@ -5,7 +5,7 @@ class OmniauthController < ApplicationController
         if @user.persisted?
             sign_in_and_redirect @user
         else
-            redirect_to new_user_session_path , flash: {notice: "Errore nell\'accesso con GitHub, riprovare"}
+            redirect_to new_user_session_path , flash: {alert: "Errore nell\'accesso con GitHub, riprovare"}
         end
     end
 
@@ -16,14 +16,14 @@ class OmniauthController < ApplicationController
         if @user.persisted?
             sign_in_and_redirect @user
         else
-            redirect_to new_user_session_path , flash: {notice: "Errore nell\'accesso con Google, riprovare"}
+            redirect_to new_user_session_path , flash: {alert: "Errore nell\'accesso con Google, riprovare"}
         end
     end
 
 
 
     def failure
-        redirect_to new_user_registration_url , flash: {notice: "Errore nella registrazione, riprovare"}
+        redirect_to new_user_registration_url , flash: {alert: "Errore, riprovare"}
     end
         
 
