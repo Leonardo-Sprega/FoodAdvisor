@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+TipoCucina.create!([{
+    nome: "Pesce",
+    descrizione: "Cucina a base di pesce"
+},
+{
+    nome: "Vegano",
+    descrizione: "Cucina adatte alle persone vegane"
+},
+{
+    nome: "Pizza",
+    descrizione: "Possibilità di consumare un'autentica pizza"
+},
+{
+    nome: "Carne",
+    descrizione: "Possibilità di consumare vari tipi di carne"
+}])

@@ -12,7 +12,6 @@ document.addEventListener("turbo:load", ()=>{
         maxZoom: 19,
     }).addTo(map);
 
-    var marker = L.marker([17.385044, 78.486671]);
 
     marker.addTo(map);
 

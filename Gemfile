@@ -99,3 +99,5 @@ gem 'activerecord-session_store'
 gem 'devise'
 
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+
+gem 'geocoder'
