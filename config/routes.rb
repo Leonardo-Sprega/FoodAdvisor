@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/contact_us', to: 'pages#contact_us'
 
+  get '/filters', to: 'pages#filters'
   
   
   resources :profilo

@@ -24,6 +24,7 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end %>
 
+
 <%- if devise_mapping.omniauthable? %>
   <div class="oauth-providers">   
     <%- resource_class.omniauth_providers.each do |provider| %>
@@ -33,8 +34,7 @@
         method: :post,
         data: {turbo: "false"} do |f| %>
           <div class="oauth-providers-2"> 
-            <%= f.submit "Login", type: "image" , src: url_for("/assets/#{provider}.png") %>
-            <div> <%=@dove%> con <%=provider%></div>
+            <%= f.submit "Login", type: "image" , class: "oauth-icons", src: url_for("/assets/#{provider}.png") %>
           </div>
         <% end %>
     <% end %>
