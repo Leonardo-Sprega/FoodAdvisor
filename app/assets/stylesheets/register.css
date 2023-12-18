@@ -16,7 +16,7 @@
     background-color: rgba(255, 0, 0, 0.508);
     font-size: 20px;
     font-weight: 400;
-    width: 35%;
+    width: 30%;
     margin: auto;
 }
 
@@ -31,35 +31,13 @@
 
 
 .form_register{
-    display: grid;
-    grid-template-rows: 2.5fr 1fr ;
 
     margin: auto;
-    width: 50%;
+    width: 40%;
 
     border: 2px solid black;
     border-radius: 10px;
 }
-
-
-.prima_parte{
-    display: grid;
-    grid-template-rows: 3fr 1fr ;
-
-
-}
-.seconda_parte{
-    text-align: center;
-    background-color: rgb(255, 242, 217);
-    margin-top: 20px;
-    padding-bottom: 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-
-
-
 
 .parte_sopra{
 
@@ -75,11 +53,15 @@
 }
 .parte_sotto{
     display: block;
-
+    background-color: rgb(255, 242, 217);
     margin: auto;
     align-items: center;
     text-align: center;
-
+    padding-bottom: 15px;
+    padding-top: 5px;
+    margin-top: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 
@@ -114,20 +96,71 @@
 
 .oauth-providers {
     display: flex;
-    width: 34%;
-    margin: auto;
-    gap: 50px; /* Puoi regolare la distanza tra i pulsanti */
+    gap: 50px;
 }
-.oauth-providers-2{
-    display: block;
-    text-align: center;
+.oauth-providers-2 {
+    margin: auto; 
 }
+.oauth-icons{
+    transform: scale(0.7);
+}
+
+
+
+
 .contenitore-barra{
     margin: auto;
     width: 62%;
 }
 
 
+
+/*   parte login   */
+
+.form_login{
+    display: grid;
+    grid-template-rows: 2.2fr 1.5fr 1fr;
+
+    margin: auto;
+    width: 30%;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.parte_form{
+    text-align: center;
+}
+.parte_auth{
+    display: flex;
+    text-align: center;
+    background-color: rgb(255, 242, 217);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.parte_register{
+    text-align: center;
+    background-color: rgb(255, 227, 175);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.titolo{
+    font-size: 30px;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+.login_botton{
+    margin-top: 10px;
+}
+.login_botton_2{
+    margin-top: 20px;
+}
+.login_botton:hover {
+    color: white; 
+}
 
 
 
