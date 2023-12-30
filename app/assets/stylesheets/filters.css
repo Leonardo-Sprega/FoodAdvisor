@@ -1,15 +1,45 @@
 .main-body{
-    display: flex;
+    margin-top: 5em;
 }
 
 .sidepanel{
-    display: flex;
-    background-color: blue;
+    border-radius: 1.5rem;
+    padding: 1em;
+    float: left;
+    border:1px solid black;
     width: 30%;
 }
 
 .filter_results{
-    flex:1;
+    margin-left: 4%;
+    float: left;
     width: 60%;
-    background-color: aliceblue;
+}
+
+.result_box{
+    display: flex;
+    margin-bottom: 1.5rem;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+.result_info{
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    .page-link{
+        color:black;
+    }
+    .page-item.active .page-link{
+        background-color: orange;
+        border-color: orange;
+    }
+
+    .page-link:hover{
+        color:orange;
+    }
 }

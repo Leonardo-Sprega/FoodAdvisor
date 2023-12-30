@@ -8,7 +8,7 @@
     <div class='sidepanel'>
 
         <div class="top">
-            <h5 style="font">Valutazione in stelle</h5>
+            <h5 >Valutazione in stelle</h5>
         </div>
 
     </div>
@@ -18,7 +18,7 @@
         <div class= "result_box">
             <%= link_to ristorante do%>
             <div class="result_image"> 
-                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:200px;height:200px" >
+                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:200px;height:200px;border-radius:5px" >
             </div>
             <% end %>
             <div class="result_info"> 
@@ -27,7 +27,7 @@
                 <i class="fa-solid fa-clock fa-lg" style="color: black;"></i> <%= ristorante.oraapertura.strftime("%H:%M") %> - <%= ristorante.orachiusura.strftime("%H:%M") %>
                 <p>
                     <br>
-                    <%= ristorante.descrizione %>
+                    <%=  truncate(ristorante.descrizione, length: 180) { link_to 'Read More', ristorante, style:"text-decoration:none;" } %>
                 </p>
                  
             </div>
