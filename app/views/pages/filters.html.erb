@@ -1,11 +1,42 @@
 <div class="layout">
 
-<h1 class='header_h1'>Alla ricerca di un ristorante?</h1>
+<h1 class='header_h1'><%= @cucina %></h1>
 
-<div class=''>
+<div class="main-body">
+
+
+    <div class='sidepanel'>
+
+        <div class="top">
+            <h5 style="font">Valutazione in stelle</h5>
+        </div>
+
+    </div>
+
+    <div class="filter_results">
+        <% @ristoranti.where("").each do |ristorante| %>
+        <div class= "result_box">
+            <%= link_to ristorante do%>
+            <div class="result_image"> 
+                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:200px;height:200px" >
+            </div>
+            <% end %>
+            <div class="result_info"> 
+                 
+                <h4> <%= link_to ristorante.nome, ristorante, style:"text-decoration:none;color:black" %></h4>
+                <i class="fa-solid fa-clock fa-lg" style="color: black;"></i> <%= ristorante.oraapertura.strftime("%H:%M") %> - <%= ristorante.orachiusura.strftime("%H:%M") %>
+                <p>
+                    <br>
+                    <%= ristorante.descrizione %>
+                </p>
+                 
+            </div>
+        </div>
+        <% end %>
+
+    <%= paginate @ristoranti%>
+    </div>
 
 </div>
-
-
 
 </div>

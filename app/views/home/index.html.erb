@@ -3,13 +3,10 @@
 
 <h1 class='header_h1'>Alla ricerca di un ristorante?</h1>
 
-
     <div class="filtri">
-        <button class="filtri-btn">Pesce</button>
-        <button class="filtri-btn">Pizza</button>
-        <button class="filtri-btn">Carne</button>
-        <button class="filtri-btn">Vegano</button>
-        <button class="filtri-btn">Italiana</button>
+        <% @type.limit(5).each do |tipo| %>
+        <%= button_to tipo.nome.capitalize() ,filters_path, class:"filtri-btn", method: :get, params: { :type => tipo.nome } %>
+        <% end %>
     </div>
 
     <div class="search-form">

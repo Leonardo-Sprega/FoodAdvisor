@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @ristorantes = Ristorante.all 
-    @foto_ristorantes = FotoRistorante.all
+    @ristorantes = Ristorante.all
+    @type = TipoCucina.all
   end
 end

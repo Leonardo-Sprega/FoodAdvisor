@@ -6,19 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-TipoCucina.create!([{
-    nome: "Pesce",
-    descrizione: "Cucina a base di pesce"
-},
-{
-    nome: "Vegano",
-    descrizione: "Cucina adatte alle persone vegane"
-},
-{
-    nome: "Pizza",
-    descrizione: "Possibilità di consumare un'autentica pizza"
-},
-{
-    nome: "Carne",
-    descrizione: "Possibilità di consumare vari tipi di carne"
+FotoRistorante.create!([{
+    url: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/77/03/36/ingresso-porto-di-ripetta.jpg",
+    ristorante_id: "2"
+
 }])
