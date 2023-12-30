@@ -1,0 +1,15 @@
+.main-body{
+    display: flex;
+}
+
+.sidepanel{
+    display: flex;
+    background-color: blue;
+    width: 30%;
+}
+
+.filter_results{
+    flex:1;
+    width: 60%;
+    background-color: aliceblue;
+}
