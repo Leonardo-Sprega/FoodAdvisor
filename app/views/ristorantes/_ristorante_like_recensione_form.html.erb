@@ -21,9 +21,14 @@
                 </form>
             <%end%>
         <%else%>
-            <%= button_to new_user_session_path, method: :get,class:"btn btnliker"  do%>
+           <button class="btn btnliker" onclick="redirectToLogin()">
                 <i class='fa-solid fa-thumbs-up fa-lg' style='color: #A1CED8;'></i><%= rec.like_recensiones.count%> 
-            <%end%>
+            </button>
         <%end%>
     </div>
+    <script>
+        function redirectToLogin() {
+            window.location.href = '<%= new_user_session_path %>';
+        }
+    </script>
 <%end%>
