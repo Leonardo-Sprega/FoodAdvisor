@@ -1,12 +1,12 @@
 <%= turbo_frame_tag "like_bottone" do%>
     <% ris=Ristorante.find_by(id: ristorante_id)%>
-    <% like=current_user.likes.find_by(ristorante_id: ris.id)%>
     <div class="row">
         <div class="col-auto">
           <h1 style="font-weight: bold;"><%= ris.nome %></h1>
         </div>
         <div class="col-auto">
             <% if user_signed_in?%>
+                <% like=current_user.likes.find_by(ristorante_id: ris.id)%>
                 <% if like.nil?%>
                     <form action="/likes" method="post" id="like_form">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -27,17 +27,21 @@
                     </form>
                 <%end%>
             <%else%>
-                <%= button_to new_user_session_path, method: :get, class:"btn btnlike" do %>
+                <button class="btn btnliker" onclick="redirectToLogin()">
                     <i class='fas fa-heart icon-heart'></i>
                     <strong class="rev"><%= ris.likes.count %></strong>
-                <% end %>
+                </button>
             <%end%>
         </div>
         <div class="col-auto">
             <p id="textcons" class="hid" ><strong>Consigliato da <%=ris.likes.count%> utenti!</strong></p>
         </div>
     </div>
-
+    <script>
+        function redirectToLogin() {
+            window.location.href = '<%= new_user_session_path %>';
+        }
+    </script>
 <%end%>
 
 
