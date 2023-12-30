@@ -27,17 +27,21 @@
                     </form>
                 <%end%>
             <%else%>
-                <%= button_to new_user_session_path, method: :get, class:"btn btnlike" do %>
+                <button class="btn btnliker" onclick="redirectToLogin()">
                     <i class='fas fa-heart icon-heart'></i>
                     <strong class="rev"><%= ris.likes.count %></strong>
-                <% end %>
+                </button>
             <%end%>
         </div>
         <div class="col-auto">
             <p id="textcons" class="hid" ><strong>Consigliato da <%=ris.likes.count%> utenti!</strong></p>
         </div>
     </div>
-
+    <script>
+        function redirectToLogin() {
+            window.location.href = '<%= new_user_session_path %>';
+        }
+    </script>
 <%end%>
 
 
