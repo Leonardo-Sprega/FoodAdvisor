@@ -8,13 +8,18 @@
     <div class='sidepanel'>
 
         <div class="top">
-            <h5 >Valutazione in stelle</h5>
+            <div class="Categoria">
+                <h5 >Categoria </h5>
+
+            </div>
+
+
         </div>
 
     </div>
 
     <div class="filter_results">
-        <% @ristoranti.where("").each do |ristorante| %>
+        <% @ristoranti.each do |ristorante| %>
         <div class= "result_box">
             <%= link_to ristorante do%>
             <div class="result_image"> 

@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-    def home
-    end
   
     def about
     end
@@ -15,13 +13,16 @@ class PagesController < ApplicationController
     end
 
     def filters
-      @ristoranti = Ristorante.page(params[:page]).per(5)
-      #@ristoranti_filter = @ristoranti.joins(:tipo_cucinas).where(["tipo_cucinas.id = ? and tipo_cucinas.nome = ?", "@ristoranti.id"])
       if params.has_key?(:type)
         @cucina = 'I migliori nella categoria '+params[:type].capitalize()
+        @ristoranti = Ristorante.joins(:tipo_cucina).where(tipo_cucinas: {nome: params[:type]}).page(params[:page]).per(5)
+        @q = @ristoranti.ransack(params[:q])
+        @ristoranti = @q.result(distinct: true).page(params[:page]).per(5)
       else
         @cucina = 'I migliori ristoranti'
-        @dislay = @ristoranti
+        @ristoranti = Ristorante.page(params[:page]).per(5)
+        @q = @ristoranti.ransack(params[:q])
+        @ristoranti = @q.result(distinct: true).page(params[:page]).per(5)
       end
 
     end
