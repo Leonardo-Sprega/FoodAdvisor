@@ -10,6 +10,10 @@
         <div class="top">
             <div class="Categoria">
                 <h5 >Categoria </h5>
+                <% @categorie.each do |categoria|%>
+
+                    <%= button_to categoria.nome.capitalize() ,filters_path, class:"categorie-btn", method: :get,remote: true, params: { :type => categoria.nome } %>
+                <% end %>
 
             </div>
 

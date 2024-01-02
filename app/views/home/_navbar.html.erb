@@ -15,9 +15,7 @@
             <ul class="navbar-nav ms-auto">
                         <% if user_signed_in? %>
 
-                            <li>
-                                <%= link_to "Hai un ristorante?", new_ristorante_url , class:"nav-link nav-hv", id:"new-rist"%>
-                            </li>
+                            <%= link_to "Hai un ristorante?", new_ristorante_url , class:"nav-link nav-hv", id:"new-rist"%>
 
                             <i class="fa-solid fa-user fa-xl" style="color: orange;"></i>
                             <%= button_to "#{

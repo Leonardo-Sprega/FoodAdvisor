@@ -9,6 +9,9 @@ class RistorantesController < ApplicationController
 
   # GET /ristorantes/1 or /ristorantes/1.json
   def show
+    Ristorante.not_geocoded.each { |ristorante| ristorante.geocode && ristorante.save! }
+    @risto_coord = Ristorante.where(id: params[:id]).select("latitudine, longitudine, nome").as_json
+    gon.latlongrist = @risto_coord
   end
 
   # GET /ristorantes/new

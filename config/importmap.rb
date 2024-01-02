@@ -10,6 +10,8 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "scriptristorante"
 pin "carousel"
 pin "password"
+pin "ristorante_maps"
+pin "maps"
 
 pin "stimulus-rails-nested-form", to: "https://ga.jspm.io/npm:stimulus-rails-nested-form@4.1.0/dist/stimulus-rails-nested-form.mjs"
 pin "leaflet", to: "https://ga.jspm.io/npm:leaflet@1.9.4/dist/leaflet-src.js"

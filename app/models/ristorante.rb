@@ -14,6 +14,13 @@ class Ristorante < ApplicationRecord
 
   searchkick text_middle: %i[nome]
 
+  geocoded_by :address, latitude: :latitudine, longitude: :longitudine
+
+
+  def address
+    [indirizzo, citta].compact.join(', ')
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["cap", "citta", "created_at", "descrizione", "email", "id", "indirizzo", "latitudine", "longitudine", "nome", "oraapertura", "orachiusura", "provincia", "regione", "sitoweb1", "sitoweb2", "sitoweb3", "telefono", "tipo_cucina_id"]
   end

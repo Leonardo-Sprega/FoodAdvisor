@@ -1,4 +1,6 @@
-
+<% content_for :head do %>
+  <%= javascript_import_module_tag "maps" %>
+<% end %>
 <div class="layout">
 
 <h1 class='header_h1'>Alla ricerca di un ristorante?</h1>
@@ -9,9 +11,11 @@
         <% end %>
     </div>
 
+
     <div class="search-form">
         <%= render partial: "search/form", locals: {results: []}%>
     </div>
+
     
 
         <div class="map-description">

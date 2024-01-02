@@ -34,10 +34,10 @@
         <li class="hid"><a id="button" class="btn btn-light"  href="#section_menu">Menu</a></li>
         <% if user_signed_in? %>
           <li><%= link_to 'Prenota', new_ristorante_prenotazione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
-          <li><%= link_to 'Recencisci', new_ristorante_recensione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
+          <li><%= link_to 'Recensisci', new_ristorante_recensione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
         <% else %>
           <li><%= link_to 'Prenota', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
-          <li><%= link_to 'Recencisci', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
+          <li><%= link_to 'Recensisci', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
         <%end%>
         <li class="hid"><a id="button" class="btn btn-light"  href="#section_recensioni">Recensioni</a></li>
         <li class="rev"><a id="button" class="btn btn-light"  href="tel:+39<%= ristorante.telefono %>"><i class="fa fa-phone" style="font-size:20px"></i></a></li>

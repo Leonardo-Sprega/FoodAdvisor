@@ -105,3 +105,5 @@ gem 'geocoder'
 gem 'ransack'
 
 gem 'kaminari'
+
+gem 'gon'
