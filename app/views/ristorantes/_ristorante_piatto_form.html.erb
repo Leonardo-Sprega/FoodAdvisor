@@ -15,6 +15,11 @@
         <%= f.number_field :prezzo ,class:"form-control" ,placeholder:"Inserisci il prezzo del piatto ($)" %>
     </div>
 
+    <div class="form-group">
+        <%= f.label :speciale %>
+        <%= f.check_box :speciale %>
+    </div>
+
     <button type="button" data-action="nested-form#remove">Remove piatto</button>
 
     <%= f.hidden_field :_destroy %>
@@ -34,6 +39,11 @@
     <div class="form-group ">
         <%= f.label :prezzo %>
         <%= f.number_field :prezzo ,class:"form-control" ,placeholder:"Inserisci il prezzo del piatto ($)" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :speciale %>
+        <%= f.check_box :speciale %>
     </div>
 
     <button type="button" data-action="nested-form#remove">Remove piatto</button>

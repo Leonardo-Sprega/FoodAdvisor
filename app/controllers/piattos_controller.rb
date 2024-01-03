@@ -67,7 +67,7 @@ class PiattosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def piatto_params
-      params.require(:piatto).permit(:nome, :descrizione,:prezzo,:ristorante_id)
+      params.require(:piatto).permit(:nome, :descrizione,:prezzo,:speciale, :ristorante_id)
     end
 
     protected

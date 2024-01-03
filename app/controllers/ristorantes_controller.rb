@@ -66,6 +66,13 @@ class RistorantesController < ApplicationController
     end
   end
 
+  def order_recensione
+    order_type = params[:order_type]
+    @ristorante = Ristorante.find(params[:id])
+    @recensioni = @ristorante.recensiones.order(order_type.to_sym => :desc)
+    render partial: 'recensiones/recensione_elenco_recensioni', locals: { recensioni: @recensioni }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ristorante
@@ -74,7 +81,7 @@ class RistorantesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ristorante_params
-      params.require(:ristorante).permit(:nome, :regione, :provincia, :citta, :indirizzo, :cap, :email, :telefono, :sitoweb1, :sitoweb2, :sitoweb3, :descrizione, :oraapertura, :orachiusura,:latitudine,:longitudine,:user_id ,:tipo_cucina_id, foto_ristorantes_attributes:[ :id, :url, :_destroy], piattos_attributes:[ :id,:nome, :descrizione,:prezzo, :_destroy] )
+      params.require(:ristorante).permit(:nome, :regione, :provincia, :citta, :indirizzo, :cap, :email, :telefono, :sitoweb1, :sitoweb2, :sitoweb3, :descrizione, :oraapertura, :orachiusura,:latitudine,:longitudine,:user_id ,:tipo_cucina_id, foto_ristorantes_attributes:[ :id, :url, :_destroy], piattos_attributes:[ :id,:nome, :descrizione,:prezzo, :speciale, :_destroy] )
     end
 
     protected
