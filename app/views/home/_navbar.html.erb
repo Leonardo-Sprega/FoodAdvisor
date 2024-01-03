@@ -16,7 +16,11 @@
                         <% if user_signed_in? %>
 
                             <li>
-                                <%= link_to "Hai un ristorante?", new_ristorante_url , class:"nav-link nav-hv", id:"new-rist"%>
+                                <% if current_user.ristoratore==="true" %>
+                                    <%= link_to "Hai un ristorante?", new_ristorante_url , class:"nav-link nav-hv", id:"new-rist"%>
+                                <% else %>
+                                    <%= link_to "Hai un ristorante?", edit_user_registration_path , class:"nav-link nav-hv", id:"new-rist"%>
+                                <% end %>
                             </li>
 
                             <i class="fa-solid fa-user fa-xl" style="color: orange;"></i>

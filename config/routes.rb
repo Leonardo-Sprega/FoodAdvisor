@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :like_recensiones, only: [:create, :destroy]
   resources :ristorantes do
+    get 'order_recensione/:order_type', action: :order_recensione, on: :member
     resources :piattos
     resources :foto_ristorantes
     resources :prenotaziones

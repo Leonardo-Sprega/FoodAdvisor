@@ -55,3 +55,27 @@
     }
 }
 
+/* Menu dei filtri recensione ristorante */
+
+#rist #section_recensioni .filtri-rec{
+    width: 100%;
+    margin-left:3px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+}
+
+#rist #section_recensioni .filtri-rec li {
+    display: inline;
+}
+
+#rist #section_recensioni .filtri-rec li button{
+    width: auto;
+    font-weight: bold;
+}
+
+#rist #section_recensioni .filtri-rec li button:hover{
+    background-color: black;
+    color: orange;
+}
+

@@ -1,0 +1,66 @@
+<% recensioni.each do |recensione| %>
+  <div class="section_recensione">
+    <div id="borderdiv">
+        <table><tr>
+            <td id="sx_rec">
+              <%if User.find(recensione.user_id).avatar%><img src=<%= User.find(recensione.user_id).avatar%> alt="Avatar"><%else%><img src="https://drive.google.com/uc?export=view&id=1YvD5yk7EfjT3iovndkMd1vouw6bbNxEc" alt="Avatar"><%end%>
+              <p style="font-weight: bold;"><%= User.find(recensione.user_id).nome %></p>  
+              <%#<p>rispettabilita'</p>%>
+            </td>
+
+          <td id="dx_rec">
+
+            <div class="row">
+              <div class="col-4 m-0 pl-1">
+                <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=1%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=2%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=3%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=4%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-star fa-md" <% if recensione.valutazione>=5%>style="color: orange;"<%else%>style="color: black;"<%end%>></i>
+              </div>
+              <div class="col-4 m-0 pl-1">
+                <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=1%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=2%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+                <i class="fa-solid fa-dollar-sign fa-lg" <% if recensione.prezzo>=3%>style="color: green;"<%else%>style="color: black;"<%end%>></i>
+              </div>
+              <div class="col-4 pr-0">
+                <%= render partial: 'ristorante_like_recensione_form', locals: { recensione_id: recensione.id }, as: "likerec_form_#{recensione.id}" %>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-auto m-0  pl-1"><h5 ><%= recensione.titolo %></h5></div>
+              <div class="col-auto m-0  ml-1  hid"><p>(visitato il <%= recensione.datavisita.strftime("%m/%d/%Y") %>)</p></div>
+              <div class="col-auto m-0  ml-1 rev"><p style="font-weight: bold;"><%= User.find(recensione.user_id).nome %></p></div>
+            </div>
+            
+            <textarea class="p-0 m-0 pl-1" rows="10" cols="60" readonly><%= recensione.commento %></textarea>
+            
+            <div id="section_rec_img">                 
+              
+                <div class="row p-0" id="row-image">
+                  <%if recensione.foto1%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto1%> ></div><%end%>
+                  <%if recensione.foto2%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto2%> ></div><%end%>
+                  <%if recensione.foto3%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto3%> ></div><%end%>
+                  <%if recensione.foto4%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto4%> ></div><%end%>
+                  <%if recensione.foto5%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto5%> ></div><%end%>
+                  <%if recensione.foto6%><div class="col-2 m-0 p-0" id="colonna"><img src=<%= recensione.foto6%> ></div><%end%>
+                </div>
+
+                <div class="popup-image">
+                  <span>&times;</span>
+                  <img src="" alt="">
+                </div>
+                
+
+            </div>
+
+
+            <div class="p-0 m-0" style="width: 98%;height: min-content;text-align: right;"><p><%= recensione.created_at.strftime("%d/%m/%Y") %></p></div>
+
+          </td>
+        </tr></table>
+    </div>
+  </div>
+<% end %>
