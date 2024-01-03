@@ -128,9 +128,9 @@
           <div id="section_recensioni">
             <h3 style="font-weight: bold;">RECENSIONI</h3>
             <ul class="filtri-rec">
-              <li><%= button_tag '<i class="fa-solid fa-star fa-lg" style="color: orange;"></i> val'.html_safe, id: 'order-valutazione', class: 'btn btn-light order-button', data: { order_type: 'valutazione' } %></li>
-              <li><%= button_tag '<i class="fa-solid fa-star fa-lg" style="color: orange;"></i> data'.html_safe, id: 'order-created_at', class: 'btn btn-light order-button', data: { order_type: 'created_at' } %></li>
-              <li><%= button_tag '<i class="fa-solid fa-dollar-sign fa-lg" style="color: green;"></i> prezzo'.html_safe, id: 'order-prezzo', class: 'btn btn-light order-button', data: { order_type: 'prezzo' } %></li>
+              <li><%= button_tag '<i class="fa-solid fa-star fa-lg" style="color: orange;"></i> Voto'.html_safe, id: 'order-valutazione', class: 'btn btn-light order-button', data: { order_type: 'valutazione' } %></li>
+              <li><%= button_tag '<i class="fa-solid fa-clock fa-lg" style="color: gray;"></i> Data'.html_safe, id: 'order-created_at', class: 'btn btn-light order-button', data: { order_type: 'created_at' } %></li>
+              <li><%= button_tag '<i class="fa-solid fa-dollar-sign fa-lg" style="color: green;"></i> Prezzo'.html_safe, id: 'order-prezzo', class: 'btn btn-light order-button', data: { order_type: 'prezzo' } %></li>
             </ul>
             <div id="section_rec">
               <%=render partial:  "recensiones/recensione_elenco_recensioni", locals: { recensioni: ristorante.recensiones }%>
