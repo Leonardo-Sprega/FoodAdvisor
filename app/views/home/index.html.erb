@@ -1,19 +1,22 @@
-
+<% content_for :head do %>
+  <%= javascript_import_module_tag "maps" %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
 <div class="layout">
 
-<h1 style="display:flex; justify-content: center;margin-top:150px; font-weight: bold; font-size: 3rem; text-align:center;">Alla ricerca di un ristorante?</h1>
-
+<h1 class='header_h1'>Alla ricerca di un ristorante?</h1>
 
     <div class="filtri">
-        <button class="filtri-btn">Pesce</button>
-        <button class="filtri-btn">Pizza</button>
-        <button class="filtri-btn">Carne</button>
-        <button class="filtri-btn">Vegano</button>
+        <% @type.limit(5).each do |tipo| %>
+        <%= button_to tipo.nome.capitalize() ,filters_path, class:"filtri-btn", method: :get, params: { :type => tipo.nome } %>
+        <% end %>
     </div>
+
 
     <div class="search-form">
         <%= render partial: "search/form", locals: {results: []}%>
     </div>
+
     
 
         <div class="map-description">
@@ -25,6 +28,17 @@
     <div id="map"></div>
 
 
+        <div class="carousel-description">
+        <div class="carousel-bg"></div>
+        <div class="carousel-text">
+            <p>
+                I ristoranti vicini a te
+            </p>
+        </div>
+        <%= render "suggestions"%>
+    </div>
+
+
     <div class="carousel-description">
         <div class="carousel-bg"></div>
         <div class="carousel-text">
@@ -34,6 +48,7 @@
         </div>
         <%= render "carousel"%>
     </div>
+
 </div>
 
 

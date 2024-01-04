@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_03_184434) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_01_210853) do
   create_table "foto_ristorantes", force: :cascade do |t|
     t.string "url"
     t.integer "ristorante_id", null: false
@@ -104,8 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_184434) do
     t.integer "tipo_cucina_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "latitudine"
-    t.string "longitudine"
+    t.float "latitudine"
+    t.float "longitudine"
     t.integer "user_id", null: false
     t.index ["tipo_cucina_id"], name: "index_ristorantes_on_tipo_cucina_id"
     t.index ["user_id"], name: "index_ristorantes_on_user_id"

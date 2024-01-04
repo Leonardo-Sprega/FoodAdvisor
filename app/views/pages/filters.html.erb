@@ -1,0 +1,83 @@
+
+<div class="layout">
+
+<h1 class='header_h1'>Cerca il tuo prossimo ristorante</h1>
+
+
+<div class="filter-background">
+
+<div class="main-body">
+
+
+    <div class='sidepanel'>
+
+        <div class="top">
+            
+            <%= search_form_for @q, url: filters_path ,data: {turbo_frame: :results, turbo_action: 'advance'} do |f| %>
+                <div class="">
+                    <h5 >Cerca per nome </h5>
+                    <%= f.search_field :nome_cont, oninput: 'this.form.requestSubmit();' %>
+                </div>
+                    
+                <br />
+
+                <div class="categoria">
+                    <h5 >Categoria </h5>
+                    <%= f.collection_check_boxes(:tipo_cucina_nome_in, TipoCucina.all, :nome, :nome, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                        <span class="checkbox_filter">
+                        <%= checkbox.check_box %>
+                        <%= checkbox.label class: "filter-label" %>
+                        </span>
+                    <% end %>
+
+                </div>
+
+                <br>
+                <div class="categoria">
+                    <h5 >Regione </h5>
+                    <%= f.collection_check_boxes(:regione_in, Ristorante.select(:regione).distinct, :regione, :regione, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                        <span class="checkbox_filter">
+                        <%= checkbox.check_box %>
+                        <%= checkbox.label class: "filter-label"%>
+                        </span>
+                    <% end %>
+
+                </div>
+
+            <% end %>
+        </div>
+
+    </div>
+
+    <div class="filter_results">
+        <%= turbo_frame_tag :results, target: "_top" do %>
+            <% @ristoranti.each do |ristorante|%>
+            <div class= "result_box">
+            <%= link_to ristorante do%>
+            <div class="result_image"> 
+                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:200px;height:200px;border-radius:5px" >
+            </div>
+            <% end %>
+            <div class="result_info"> 
+                 
+                <h4> <%= link_to ristorante.nome, ristorante, style:"text-decoration:none;color:black" %></h4>
+                <i class="fa-solid fa-clock fa-lg" style="color: black;"></i> <%= ristorante.oraapertura.strftime("%H:%M") %> - <%= ristorante.orachiusura.strftime("%H:%M") %>
+                <p>
+                    <br>
+                    <%=  truncate(ristorante.descrizione, length: 180) { link_to 'Read More', ristorante, style:"text-decoration:none;" } %>
+                </p>
+                 
+            </div>
+        </div>
+        <% end %>
+
+    <%= paginate @ristoranti %>
+    <% end %>
+    </div>
+    
+
+</div>
+
+</div>
+
+</div>
