@@ -4,7 +4,6 @@
     <title>FoodAdvisor</title>
     <%= include_gon %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-     <meta name="turbo-visit-control" content="reload">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -50,8 +49,6 @@
 
     <p class="notice"><%= flash[:notice] %></p>
     <%= yield %>
-
-    <br>
     
   </body>
   

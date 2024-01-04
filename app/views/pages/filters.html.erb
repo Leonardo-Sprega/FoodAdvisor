@@ -1,6 +1,10 @@
+
 <div class="layout">
 
-<h1 class='header_h1'><%= @cucina %></h1>
+<h1 class='header_h1'>Cerca il tuo prossimo ristorante</h1>
+
+
+<div class="filter-background">
 
 <div class="main-body">
 
@@ -8,23 +12,47 @@
     <div class='sidepanel'>
 
         <div class="top">
-            <div class="Categoria">
-                <h5 >Categoria </h5>
-                <% @categorie.each do |categoria|%>
+            
+            <%= search_form_for @q, url: filters_path ,data: {turbo_frame: :results, turbo_action: 'advance'} do |f| %>
+                <div class="">
+                    <h5 >Cerca per nome </h5>
+                    <%= f.search_field :nome_cont, oninput: 'this.form.requestSubmit();' %>
+                </div>
+                    
+                <br />
 
-                    <%= button_to categoria.nome.capitalize() ,filters_path, class:"categorie-btn", method: :get,remote: true, params: { :type => categoria.nome } %>
-                <% end %>
+                <div class="categoria">
+                    <h5 >Categoria </h5>
+                    <%= f.collection_check_boxes(:tipo_cucina_nome_in, TipoCucina.all, :nome, :nome, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                        <span class="checkbox_filter">
+                        <%= checkbox.check_box %>
+                        <%= checkbox.label class: "filter-label" %>
+                        </span>
+                    <% end %>
 
-            </div>
+                </div>
 
+                <br>
+                <div class="categoria">
+                    <h5 >Regione </h5>
+                    <%= f.collection_check_boxes(:regione_in, Ristorante.select(:regione).distinct, :regione, :regione, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                        <span class="checkbox_filter">
+                        <%= checkbox.check_box %>
+                        <%= checkbox.label class: "filter-label"%>
+                        </span>
+                    <% end %>
 
+                </div>
+
+            <% end %>
         </div>
 
     </div>
 
     <div class="filter_results">
-        <% @ristoranti.each do |ristorante| %>
-        <div class= "result_box">
+        <%= turbo_frame_tag :results, target: "_top" do %>
+            <% @ristoranti.each do |ristorante|%>
+            <div class= "result_box">
             <%= link_to ristorante do%>
             <div class="result_image"> 
                 <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:200px;height:200px;border-radius:5px" >
@@ -44,7 +72,11 @@
         <% end %>
 
     <%= paginate @ristoranti %>
+    <% end %>
     </div>
+    
+
+</div>
 
 </div>
 

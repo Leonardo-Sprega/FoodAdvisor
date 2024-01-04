@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <%= javascript_import_module_tag "maps" %>
+  <meta name="turbo-visit-control" content="reload">
 <% end %>
 <div class="layout">
 
@@ -27,6 +28,17 @@
     <div id="map"></div>
 
 
+        <div class="carousel-description">
+        <div class="carousel-bg"></div>
+        <div class="carousel-text">
+            <p>
+                I ristoranti vicini a te
+            </p>
+        </div>
+        <%= render "suggestions"%>
+    </div>
+
+
     <div class="carousel-description">
         <div class="carousel-bg"></div>
         <div class="carousel-text">
@@ -36,6 +48,7 @@
         </div>
         <%= render "carousel"%>
     </div>
+
 </div>
 
 

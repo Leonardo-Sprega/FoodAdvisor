@@ -25,4 +25,8 @@ class Ristorante < ApplicationRecord
     ["cap", "citta", "created_at", "descrizione", "email", "id", "indirizzo", "latitudine", "longitudine", "nome", "oraapertura", "orachiusura", "provincia", "regione", "sitoweb1", "sitoweb2", "sitoweb3", "telefono", "tipo_cucina_id"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["foto_ristorantes", "likes", "piattos", "prenotaziones", "recensiones", "tipo_cucina", "user"]
+  end
+
 end
