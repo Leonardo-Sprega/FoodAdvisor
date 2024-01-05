@@ -92,6 +92,12 @@ Rails.application.configure do
   authentication:       'plain',
   enable_starttls_auto: true  }
 
+  class ActionDispatch::Request
+    def location
+      "101.56.24.215"
+    end
+end
+
 
 
 end

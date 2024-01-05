@@ -12,9 +12,30 @@ document.addEventListener("turbo:load", ()=>{
         maxZoom: 19,
     }).addTo(map);
 
-    var marker = L.marker([17.385044, 78.486671]);
 
-    marker.addTo(map);
+    let coord = gon.coordinate;
+    var FGMarker = new L.FeatureGroup() ;
+
+    for(let i = 0; i<coord.length; i++){
+        if (i != 5){
+            var marker = L.marker([parseFloat(JSON.stringify(coord[i]["latitudine"])),parseFloat(JSON.stringify(coord[i]["longitudine"]))])
+            .bindPopup("<p><h6>"+'<a href="http://localhost:3000/ristorantes/'+coord[i]["id"]+'">'+coord[i]["nome"]+'</a>'+"</h6>"+coord[i]["indirizzo"]+", "+coord[i]["citta"]+"</p>")
+            .on('click', function(e){
+                map.flyTo(e.latlng, 13);
+            })
+            .on({
+                popupclose: (e) => {
+                    map.fitBounds(FGMarker.getBounds());
+                }
+            });
+            FGMarker.addLayer(marker);
+            FGMarker.addTo(map);
+            
+        }
+    }
+
+    map.fitBounds(FGMarker.getBounds());
 
     map.zoomControl.setPosition('bottomright');
   })
+

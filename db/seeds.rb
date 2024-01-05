@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+FotoRistorante.create!([{
+    url: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/77/03/36/ingresso-porto-di-ripetta.jpg",
+    ristorante_id: "2"
+
+}])
