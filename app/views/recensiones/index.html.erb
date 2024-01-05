@@ -6,9 +6,10 @@
   <% @recensiones.each do |recensione| %>
     <%= render recensione %>
     <p>
-      <%= link_to "Show this recensione", recensione %>
+      <%= link_to "Show this recensione", ristorante_recensione_path(params[:ristorante_id], recensione) %>
     </p>
   <% end %>
+
+  <%= paginate @recensiones%>
 </div>
 
-<%= link_to "New recensione", new_recensione_path %>

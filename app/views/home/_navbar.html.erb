@@ -8,7 +8,7 @@
 
         <% else %>
         <div class="navbar-logo">
-            <%= link_to "FoodAdvisor", home_index_path, class:"navbar-brand mx-auto" %>
+            <%= link_to "FoodAdvisor", home_index_path, class:"navbar-brand mx-auto", style:"font-size:30px !important" %>
         </div>
         <% end %>
 
@@ -16,13 +16,11 @@
             <ul class="navbar-nav ms-auto">
                         <% if user_signed_in? %>
 
-                            <li>
                                 <% if current_user.ristoratore==="true" %>
                                     <%= link_to "Hai un ristorante?", new_ristorante_url , class:"nav-link nav-hv", id:"new-rist"%>
                                 <% else %>
                                     <%= link_to "Hai un ristorante?", edit_user_registration_path , class:"nav-link nav-hv", id:"new-rist"%>
                                 <% end %>
-                            </li>
 
                             <i class="fa-solid fa-user fa-xl" style="color: orange;"></i>
                             <%= button_to "#{
@@ -38,7 +36,7 @@
                         <% end %>
 
                   
-                        <% if !user_signed_in? %>
+                        <% if !user_signed_in? &&  !(current_page?(new_user_registration_path) || current_page?(new_user_session_path)) %>
                             <%= button_to "Login", new_user_session_path, class:"nav-btn",method: :get %>
                         <% end %>
                 

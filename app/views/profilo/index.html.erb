@@ -1,20 +1,94 @@
+<% if $messaggio_notizia.present? %>
+  <% flash[:notizia] = $messaggio_notizia %>
+  <% $messaggio_notizia = nil %>
+<% end %>
+
+<% if $messaggio_errore.present? %>
+  <% flash[:alert] = $messaggio_errore %>
+  <% $messaggio_errore = nil %>
+<% end %>
+
+<div class = "avatar_box">
+  <div class = "avatar_img">
+    <%= image_tag(current_user.avatar, style: "height:300px; width:300px") %>
+  </div>
+</div>
+
+<div class = "box_titolo_profilo">
+  <div class = "titolo_profilo">
+    <%= current_user.nome%> <%= current_user.cognome%>
+  </div>
+  <%= link_to edit_user_registration_path, class: "modifica_profilo", method: :get do %>
+    <i class="fa-solid fa-pen-to-square fa-xl"></i>
+  <% end %>
+</div>
+<div class = "titolo_form">
+  <% flash.each do |key, value| %>
+    <div class="<%= key %>"><%= value %></div>
+  <% end %>
+</div>
 
 
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="profile-body">
 
-ciao sono il profilo di <%= current_user.nome %>
+    <div class="side-profile">
 
-questo è il mio avatar
-<br/>
-<%= image_tag(current_user.avatar) %>
-<br/>
-<br/>
-ciao sono <%= current_user.id %>
-<br/>
+        <%= link_to "Dati personali", dati_utente_path, class:"profile-section",remote: true %>
+        <%= link_to "Prenotazioni", prenotazioni_utente_path, class:"profile-section", remote: true %>
+        <%= link_to "Recensioni", recensioni_utente_path, class:"profile-section",remote: true %>
+
+        <% if current_user.ristoratore.downcase=='true' || current_user.ristoratore=='1' || current_user.ristoratore.downcase=='si'%>
+            <%= link_to "Ristoranti", ristoranti_utente_path,class:"profile-section" ,remote: true %>
+        <%end %>
+
+        
+    </div>
+
+    <div id="profile-content">
+
+        <div class="dati-personali">
+            <div class="info-field">
+                <label>Nome:</label>
+                <span><%= current_user.nome %></span>
+            </div>
+            <div class="info-field">
+                <label>Cognome:</label>
+                <span><%= current_user.cognome %></span>
+            </div>
+            <div class="info-field">
+                <label>Città:</label>
+                <span><%= current_user.citta %></span>
+            </div>
+            <div class="info-field">
+                <label>Provincia:</label>
+                <span><%= current_user.provincia %></span>
+            </div>
+            <div class="info-field">
+                <label>CAP:</label>
+                <span><%= current_user.cap %></span>
+            </div>
+            <div class="info-field">
+                <label>Email:</label>
+                <span><%= current_user.email %></span>
+            </div>
+            <div class="info-field">
+                <label>Ristoratore:</label>
+                <span>
+
+                    <% if current_user.ristoratore.downcase=='true' || current_user.ristoratore=='1' || current_user.ristoratore.downcase=='si' %>
+                    <%= 'Si' %>
+                    <% else %>
+                    <%= 'No'%>
+                    <% end %>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
-<%= button_to "Edit",  edit_user_registration_path , class:"nav-btn",method: :get %>
-
-<br/><br/><br/><br/><br/><br/><br/><br/>
-
+  

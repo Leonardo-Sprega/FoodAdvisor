@@ -28,7 +28,7 @@ var slider = tns({
   items: 3,
   slideBy: 'page',
   nav: false,
-  controlsContainer: '.carouselBtns2',
+  controlsContainer: '.carouselBtns',
   autoplay: false,
   responsive: {
     0: {

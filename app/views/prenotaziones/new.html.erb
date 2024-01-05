@@ -6,12 +6,12 @@
 
         <div class="form-group ">
           <label> Nome del cliente </label>
-          <%= text_field_tag 'prenotazione[nomecliente]', nil,class:"form-control",placeholder:"Inserisci il nome del cliente",required: true %>
+          <%= text_field_tag 'prenotazione[nomecliente]', nil,class:"form-control",placeholder:"Inserisci il nome del cliente",value: current_user.nome ,required: true %>
         </div>
 
         <div class="form-group ">
           <label> Cognome del cliente </label>
-          <%= text_field_tag 'prenotazione[cognomecliente]',nil ,class:"form-control",placeholder:"Inserisci il cognome del cliente" %>
+          <%= text_field_tag 'prenotazione[cognomecliente]',nil ,class:"form-control",placeholder:"Inserisci il cognome del cliente",value: current_user.cognome %>
         </div>
 
         <div class="form-group ">
@@ -21,7 +21,7 @@
 
         <div class="form-group ">
           <label> Email del cliente </label>
-          <%= email_field_tag 'prenotazione[emailcliente]' , nil,class:"form-control" ,placeholder:"Inserisci l'email del cliente"%>
+          <%= email_field_tag 'prenotazione[emailcliente]' , nil,class:"form-control" ,placeholder:"Inserisci l'email del cliente",value: current_user.email%>
         </div>
 
         <div class="form-group ">

@@ -1,31 +1,31 @@
-<div id="<%= dom_id prenotazione %>">
+<div id="prenotazione">
   <p>
     <strong>Ora:</strong>
-    <%= prenotazione.ora %>
+    <%= prenotazione.ora.strftime("%H:%M") %>
   </p>
 
   <p>
     <strong>Data:</strong>
-    <%= prenotazione.data %>
+    <%= prenotazione.data.strftime("%d-%m-%Y") %>
   </p>
 
   <p>
-    <strong>Nomecliente:</strong>
+    <strong>Nome:</strong>
     <%= prenotazione.nomecliente %>
   </p>
 
   <p>
-    <strong>Cognomecliente:</strong>
+    <strong>Cognome:</strong>
     <%= prenotazione.cognomecliente %>
   </p>
 
   <p>
-    <strong>Telefonocliente:</strong>
+    <strong>Telefono:</strong>
     <%= prenotazione.telefonocliente %>
   </p>
 
   <p>
-    <strong>Emailcliente:</strong>
+    <strong>Email:</strong>
     <%= prenotazione.emailcliente %>
   </p>
 
@@ -44,14 +44,6 @@
     <%= prenotazione.messaggio %>
   </p>
 
-  <p>
-    <strong>Utente:</strong>
-    <%= prenotazione.utente_id %>
-  </p>
 
-  <p>
-    <strong>Ristorante:</strong>
-    <%= prenotazione.ristorante_id %>
-  </p>
 
 </div>

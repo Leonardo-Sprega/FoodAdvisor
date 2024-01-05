@@ -36,11 +36,20 @@
 
             <div class="field register-label">
               <%= f.label :password %><br>
-              
-              <%= f.password_field :password, autocomplete: "new-password", class: "register-text pass_color", id: "password" , oninput: "validator()"%>
-              <div class="contenitore-barra">
-              </div>
+              <%= f.password_field :password, autocomplete: "new-password", class: "register-text register-text-2 pass_color", id: "password" , oninput: "validator()"%>
+              <i class="fa-regular fa-eye"  style="color: black;" onclick="togglePasswordVisibility()"></i>
             </div>
+
+            <script>
+              function togglePasswordVisibility() {
+                var passwordInput = document.getElementById('password');
+                if (passwordInput.type === 'password') {
+                  passwordInput.type = 'text';
+                } else {
+                  passwordInput.type = 'password';
+                }
+              }
+            </script>
 
             <div class="field register-label">
               <%= f.label :conferma_password %><br />

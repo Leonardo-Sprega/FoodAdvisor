@@ -5,7 +5,7 @@ class PrenotazionesController < ApplicationController
 
   # GET /prenotaziones or /prenotaziones.json
   def index
-    @prenotaziones = Prenotazione.all
+    @prenotaziones = Prenotazione.where(ristorante_id: params[:ristorante_id])
   end
 
   # GET /prenotaziones/1 or /prenotaziones/1.json

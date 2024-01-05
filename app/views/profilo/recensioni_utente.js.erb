@@ -1,0 +1,2 @@
+$('#profile-content').html("<%= escape_javascript(render :partial => 'recensioni_utente')%>")
+$('#pag').html("<%= escape_javascript(paginate(@ristoranti, :remote => true).to_s)%>")

@@ -1,0 +1,38 @@
+        <div class="dati-personali">
+            <div class="info-field">
+                <label>Nome:</label>
+                <span><%= current_user.nome %></span>
+            </div>
+            <div class="info-field">
+                <label>Cognome:</label>
+                <span><%= current_user.cognome %></span>
+            </div>
+            <div class="info-field">
+                <label>Città:</label>
+                <span><%= current_user.citta %></span>
+            </div>
+            <div class="info-field">
+                <label>Provincia:</label>
+                <span><%= current_user.provincia %></span>
+            </div>
+            <div class="info-field">
+                <label>CAP:</label>
+                <span><%= current_user.cap %></span>
+            </div>
+            <div class="info-field">
+                <label>Email:</label>
+                <span><%= current_user.email %></span>
+            </div>
+            <div class="info-field">
+                <label>Ristoratore:</label>
+                <span>
+
+                    <% if current_user.ristoratore.downcase=='true' || current_user.ristoratore=='1' %>
+                    <%= 'Si' %>
+                    <% else %>
+                    <%= 'No'%>
+                    <% end %>
+                </span>
+            </div>
+
+        </div>

@@ -17,7 +17,7 @@ document.addEventListener("turbo:load", ()=>{
     var FGMarker = new L.FeatureGroup() ;
 
     for(let i = 0; i<coord.length; i++){
-        if (i != 5){
+        if (i != 4){
             var marker = L.marker([parseFloat(JSON.stringify(coord[i]["latitudine"])),parseFloat(JSON.stringify(coord[i]["longitudine"]))])
             .bindPopup("<p><h6>"+'<a href="http://localhost:3000/ristorantes/'+coord[i]["id"]+'">'+coord[i]["nome"]+'</a>'+"</h6>"+coord[i]["indirizzo"]+", "+coord[i]["citta"]+"</p>")
             .on('click', function(e){

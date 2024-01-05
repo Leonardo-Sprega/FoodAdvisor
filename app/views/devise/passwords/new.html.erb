@@ -19,27 +19,21 @@
   <% end %>
 </div>
 
-<div class = "form_register">
-
-  <div class = "parte-sx"> 
+<div class = "form_password_dimenticata">
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
+      <div class="field register-label register-label-pass-dim">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "register-text"%>
       </div>
 
-      <div class="actions">
-        <div class = "register-label-2"> verrà inviata un'email con il link per reimpostare la password</div>
-        <%= f.submit "invia email",class: "nav-btn " %>
+      <div class="actions register-label-pass-dim">
+        <div class = "register-label-2 "> verrà inviata un'email con il link per reimpostare la password</div>
+        <%= f.submit "invia email",class: "nav-btn register-label-nav-btn" %>
       </div>
+      
     <% end %>
-  
-  </div>
-  <div class = "parte-dx">
-    <%= render "devise/shared/links" %>
-  </div>
 
 </div>

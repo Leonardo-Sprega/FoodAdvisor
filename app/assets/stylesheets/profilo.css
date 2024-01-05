@@ -1,0 +1,108 @@
+
+
+.avatar_box {
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 0;
+    margin-top: 5em;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.avatar_img img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.box_titolo_profilo{
+    display: flex;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 0;
+    gap:15px;
+}
+
+.titolo_profilo{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin: auto;
+}
+.modifica_profilo{
+    margin: auto;
+    color: black;
+    margin-bottom: 15px;
+}
+.modifica_profilo:hover{
+    color: orange;
+}
+
+.profile-body{
+    background-color: antiquewhite;
+    min-height: 23.7em;
+    display: flex;
+    
+}
+
+.side-profile{
+    width: 25%;
+    padding-top: 5em;
+    background-color: rgb(251, 226, 193);
+    padding-bottom: 7em;
+    
+}
+
+.profile-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    text-decoration: none;
+    color: black;
+}
+
+.profile-section:hover{
+
+    background-color: #faebd7;
+    color: #648EA5;
+}
+
+#profile-content{
+    padding: 2em;
+}
+
+.dati-personali{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+  
+  .info-field {
+    margin-bottom: 10px;
+    margin-right: 5em;
+    font-size: 1.5em;
+  }
+  
+  .info-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .info-ristorante{
+    padding-left: 2rem;
+}
+
+.icons{
+    text-decoration: none;
+    color: black;
+}
+
+.icons:hover{
+    color:orange;
+}

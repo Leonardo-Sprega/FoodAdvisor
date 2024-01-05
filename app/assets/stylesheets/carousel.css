@@ -1,46 +1,75 @@
 .card-container{
   height: 30vh;
-}
-
-
-.clickable1 {
-  cursor: pointer;
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  margin-left: -2rem;
-  color: white;
-  text-shadow: 0 0 3px #000;
-
-}
-.clickable2 {
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: -2rem;
-  color: white;
-  text-shadow: 0 0 3px #000;
 }
 
-.clickable1:hover,
-.clickable2:hover {
-  color:orange;
-  transition: 0.5s;
+.immagini{
+  border-radius: 10px;
+  z-index: -1;
 }
+
+.overlay{
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 50%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  color: white; 
+  display: flex; 
+  justify-content: center;
+  align-items:end; 
+  font-size: 30px;
+}
+
 
 .carouselBtns,.carouselBtns2{
   position:relative;
-  margin-top: -15vh;
+  margin-top: -17vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-text{
+  position: relative;
+  padding-top: 20px;
 }
 
 
-
-.carousel-bg {
+.carousel-bg2 {
   position: absolute;
   left: 0;
-  background-color: bisque;
+  background-color: #5CA4FF;
   width: 100vw;
-  height: 37vh;
+  height: 45vh;
   z-index: -1;
   
+}
+
+.previous {
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -1.5rem;
+  border: 1.5px black solid;
+  background-color: white;
+}
+
+.next{
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -1.5rem;
+  background-color: white;
+  border: 1.5px black solid;
+}
+
+.previous:hover,.next:hover{
+  background-color: black;
+  color: white;
 }

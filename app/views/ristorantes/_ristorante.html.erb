@@ -39,7 +39,6 @@
             <li><%= link_to 'Recensisci', new_ristorante_recensione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
           <% end %>
           <li><%= link_to 'Prenota', new_ristorante_prenotazione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
-          <li><%= link_to 'Recensisci', new_ristorante_recensione_path(@ristorante) ,id:"button" ,class:"btn btn-light" %></li>
         <% else %>
           <li><%= link_to 'Prenota', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>
           <li><%= link_to 'Recensisci', new_user_session_path ,id:"button" ,class:"btn btn-light" %></li>

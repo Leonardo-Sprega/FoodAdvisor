@@ -1,0 +1,13 @@
+
+.header-prenotazioni{
+    margin-top: 5em;
+}
+
+#prenotazione{
+    background-color: antiquewhite;
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5em;
+    padding: 1.5em;
+    margin-bottom: 1em;
+}

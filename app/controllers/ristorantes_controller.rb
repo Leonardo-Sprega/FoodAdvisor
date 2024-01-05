@@ -61,6 +61,7 @@ class RistorantesController < ApplicationController
 
   # DELETE /ristorantes/1 or /ristorantes/1.json
   def destroy
+    @ristorante = Ristorante.find(params[:id])
     @ristorante.destroy
 
     respond_to do |format|

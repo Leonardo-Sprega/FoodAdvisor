@@ -1,17 +1,18 @@
 
 
+/*   parte Messaggi   */
+
 .notizia{
     background-color: rgba(0, 255, 119, 0.601);
     font-size: 20px;
     font-weight: 400;
-    width: 35%;
+    width: 30%;
     margin: auto;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-
 .alert{
     background-color: rgba(255, 0, 0, 0.508);
     font-size: 20px;
@@ -20,6 +21,12 @@
     margin: auto;
 }
 
+
+
+
+
+/*   parte Register  */
+
 .titolo_form{
     font-size: 40px;
     font-weight: 600;
@@ -27,9 +34,6 @@
     margin-bottom: 5px;
     text-align: center;
 }
-
-
-
 .form_register{
 
     margin: auto;
@@ -38,7 +42,6 @@
     border: 2px solid black;
     border-radius: 10px;
 }
-
 .parte_sopra{
 
     display: grid;
@@ -63,11 +66,6 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-
-
-
-
 .register-label{
     margin-top: 20px;
     margin-bottom: 2%;
@@ -80,19 +78,24 @@
 .register-text{
     text-align: center;
 }
+.register-text-2{
+    margin-left: 9%;
+}
 .nav-btn{
     text-decoration: none; 
 }
-
 .testo_password{
     margin-top: 15px;
 }
-
 .testo_provider{
     font-size: 30px;
     margin: 15px;
 }
 
+
+
+
+/*   parte Oauth   */
 
 .oauth-providers {
     display: flex;
@@ -102,16 +105,10 @@
     margin: auto; 
 }
 .oauth-icons{
-    transform: scale(0.7);
+    transform: scale(0.8);
 }
 
 
-
-
-.contenitore-barra{
-    margin: auto;
-    width: 62%;
-}
 
 
 
@@ -119,7 +116,7 @@
 
 .form_login{
     display: grid;
-    grid-template-rows: 2.2fr 1.5fr 1fr;
+    grid-template-rows: 2.4fr 1.3fr 1fr;
 
     margin: auto;
     width: 30%;
@@ -161,8 +158,69 @@
 .login_botton:hover {
     color: white; 
 }
+.register-text-3{
+    margin-left: 6%;
+}
 
 
 
+
+/*   parte Password Dimenticata  */
+
+.form_password_dimenticata{
+    display: block;
+    margin: auto;
+    width: 30%;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.register-label-pass-dim{
+    text-align: center;
+}
+.register-label-nav-btn{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+
+
+
+/*   parte Password Change  */
+
+.register-label-pass-dim-2{
+    text-align: center;
+    margin-right: 3%;
+}
+
+/*   parte Edit profile  */
+.parte_sotto_2{
+    display: grid;
+    grid-template-rows: 0.6fr 2fr 0.7fr;
+
+    margin: auto;
+    align-items: center;
+    text-align: center;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.colore_1{
+    background-color: rgb(255, 242, 217);
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+.colore_2{
+    background-color: rgb(255, 227, 175);
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+.colore_3{
+    background-color: rgb(255, 200, 97);
+    padding-top: 2%;
+    padding-bottom: 3%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 
 

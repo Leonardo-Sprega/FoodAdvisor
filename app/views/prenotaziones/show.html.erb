@@ -1,6 +1,7 @@
 
   <div class="container" id="newrist">
     <div class="container" style="margin:auto;margin-left:15%;margin-right:25%;width: 50%;">
+    <h2 style="margin-bottom:0.5em">Riepilogo Prenotazione</h2>
       <p style="margin-bottom:25px;">
         <strong>Ora:</strong>
         <%= @prenotazione.ora.strftime('%T') %>
@@ -47,7 +48,7 @@
       </p>
 
       <div id="div-back" style="margin-bottom:30px;">
-        <%= link_to "Ritorna alla hone page", home_index_path,id:"button" ,class:"btn btn-light" %> 
+        <%= link_to "Ritorna alla home page", home_index_path,id:"button" ,class:"btn btn-light" %> 
       </div>
     </div>
   </div>

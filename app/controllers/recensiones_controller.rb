@@ -5,7 +5,8 @@ class RecensionesController < ApplicationController
 
   # GET /recensiones or /recensiones.json
   def index
-    @recensiones = Recensione.all
+    @recensiones = Recensione.all.page(params[:page]).per(5)
+    @ristorante = Ristorante.all
   end
 
   # GET /recensiones/1 or /recensiones/1.json

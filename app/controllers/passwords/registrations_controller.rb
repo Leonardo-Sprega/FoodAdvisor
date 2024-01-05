@@ -8,6 +8,25 @@ class Passwords::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
+  def destroy
+    ActiveRecord::Base.transaction do
+      # Elimina record correlati nelle tabelle delle recensioni e prenotazioni
+      current_user.recensiones.destroy_all
+      current_user.prenotaziones.destroy_all
+      current_user.ristorantes.destroy_all
+      current_user.likes.destroy_all
+      current_user.like_recensiones.destroy_all
+  
+      # Continua con l'eliminazione dell'utente
+      resource.destroy
+  
+      Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+      set_flash_message! :notice, :destroyed
+      yield resource if block_given?
+      respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name) }
+    end
+  end
+
 
   # POST /resource
   def create
@@ -19,8 +38,14 @@ class Passwords::RegistrationsController < Devise::RegistrationsController
     else
 
       @user = User.find_by_email(params[:user][:email])
-      if params[:user][:password] != params[:user][:password_confirmation] || !@user.nil? 
+      if !@user.nil? 
+        $messaggio_errore = "Email già esistente, riprovare"
+        redirect_to new_user_registration_path
+      elsif params[:user][:password] != params[:user][:password_confirmation] 
         $messaggio_errore = "Errore nella registrazione, riprovare"
+        redirect_to new_user_registration_path
+      elsif !params[:user][:password].match(/\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+])[^ ]{8,}\z/)
+        $messaggio_errore = "Password debole, riprovare con un'altra"
         redirect_to new_user_registration_path
       else
         super
@@ -38,7 +63,33 @@ class Passwords::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
+  def update
 
+    password = params[:user][:password]
+    password_confirmation = params[:user][:password_confirmation]
+    current_password = params[:user][:current_password]
+    
+    if !password.blank? && password != password_confirmation 
+      $messaggio_errore = "Le password non corrispondono, riprovare" 
+      redirect_to user_password_path
+
+    elsif !password.blank? && !password.match(/\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+])[^ ]{8,}\z/)
+      $messaggio_errore = "La nuova password non rispetta i requisiti"
+      redirect_to user_password_path
+
+    elsif !current_user.valid_password?(current_password)
+      $messaggio_errore = "La password attuale non è corretta, modifiche NON applicate"
+      redirect_to user_password_path
+
+    else
+      super do |resource|
+        if resource.errors.empty? &&  !password.blank?
+          # Invia l'email di conferma
+          PasswordMailer.password_changed(resource).deliver_now
+        end
+      end
+    end
+  end
   # DELETE /resource
   # def destroy
   #   super
@@ -54,6 +105,13 @@ class Passwords::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+
+  protected
+
+  def after_update_path_for(resource)
+    $messaggio_notizia = "Modifiche correttamente applicate" 
+    profilo_index_path(resource)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

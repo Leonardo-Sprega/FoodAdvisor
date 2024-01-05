@@ -1,0 +1,49 @@
+<% if current_user.ristoratore.downcase == 'true' || current_user.ristoratore.downcase == 'si' %>
+<div class="dati-utente" >
+  <% @ristoranti.each do |ristorante|%>
+            <div class= "result_box">
+
+            <%= link_to ristorante_prenotaziones_path(ristorante) do%>
+            <div class="result_image"> 
+                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:100px;height:100px;border-radius:5px" >
+            </div>
+            <% end %>
+            <div class="info-ristorante"> 
+                 
+                <h4> <%= link_to ristorante.nome, ristorante_prenotaziones_path(ristorante), style:"text-decoration:none;color:black" %></h4>
+                <%= link_to "Visualizza tutte le prenotazioni per questo ristorante",ristorante_prenotaziones_path(ristorante), class:"icons", method: :get %>
+                <br>
+                 
+            </div>
+        </div>
+        <% end %>
+        <div id="pag">
+         <%= paginate @ristoranti%>
+         </div>
+
+</div>
+    <% else %>
+<div class="dati-utente" >
+  <% @ristoranti.each do |ristorante|%>
+            <div class= "result_box">
+            <%= link_to ristorante_prenotaziones_path(ristorante) do%>
+            <div class="result_image"> 
+                <img src="<%= ristorante.foto_ristorantes.first.url %>" style="width:100px;height:100px;border-radius:5px" >
+            </div>
+            <% end %>
+            <div class="info-ristorante"> 
+                 
+                <h4> <%= link_to ristorante.nome, ristorante_prenotaziones_path(ristorante), style:"text-decoration:none;color:black" %></h4>
+                <%= link_to "Visualizza tutte le prenotazioni per questo ristorante",ristorante_prenotaziones_path(ristorante), class:"icons", method: :get %>
+                <br>
+                 
+            </div>
+        </div>
+        <% end %>
+        <div id="pag">
+         <%= paginate @ristoranti%>
+         </div>
+
+</div>
+
+<% end %>

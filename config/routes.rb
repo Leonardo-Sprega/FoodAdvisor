@@ -27,6 +27,13 @@ Rails.application.routes.draw do
 
   get '/filters', to: 'pages#filters'
 
+  #routes profilo utente
+
+  get '/dati_utente', to: 'profilo#dati_utente'
+  get '/ristoranti_utente', to: 'profilo#ristoranti_utente'
+  get '/recensioni_utente', to: 'profilo#recensioni_utente'
+  get '/prenotazioni_utente', to: 'profilo#prenotazioni_utente'
+
   
   
   resources :profilo

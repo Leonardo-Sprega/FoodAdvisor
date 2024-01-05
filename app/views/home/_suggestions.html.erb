@@ -10,8 +10,8 @@
     <% @vicino.each do |vicino| %>
     <%= link_to vicino do%>
       <div class="card-container">
-
-        <img src="<%= vicino.foto_ristorantes.first.url %>" alt="..." width="100%" height="100%" class="imagini">
+        <div class="overlay"><%= vicino.nome %> </div>
+        <img src="<%= vicino.foto_ristorantes.first.url %>"  width="100%" height="100%" class="immagini">
 
       </div>
       <% end %>
@@ -19,7 +19,7 @@
 </div>
 
 
-  <div class="carouselBtns2">
-    <span class="clickable1"><i class="fa-solid fa-circle-chevron-left fa-2xl"></i></span>
-    <span class="clickable2"><i class="fa-solid fa-circle-chevron-right fa-2xl"></i></span>
-  </div>
+<div class="carouselBtns">
+  <button class="previous"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+</div>

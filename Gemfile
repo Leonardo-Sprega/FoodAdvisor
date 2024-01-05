@@ -107,3 +107,5 @@ gem 'ransack'
 gem 'kaminari'
 
 gem 'gon'
+
+gem 'jquery-rails'

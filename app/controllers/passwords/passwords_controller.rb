@@ -1,10 +1,18 @@
 # frozen_string_literal: true
 
 class Passwords::PasswordsController < Devise::PasswordsController
+
+  skip_before_action :require_no_authentication, only: [:new]
   # GET /resource/password/new
   # def new
   #   super
   # end
+  
+  def new
+    # Esegui il logout se l'utente è attualmente loggato
+    sign_out(current_user) if user_signed_in?
+    super
+  end
 
   # POST /resource/password
   def create
@@ -33,6 +41,31 @@ class Passwords::PasswordsController < Devise::PasswordsController
   # def update
   #   super
   # end
+
+  def update
+    password = params[:user][:password]
+    password_confirmation = params[:user][:password_confirmation]
+  
+    if password.blank? || password_confirmation.blank?
+      $messaggio_errore = "Riempire tutti i campi"
+      redirect_to user_password_path
+    elsif password != password_confirmation 
+      $messaggio_errore = "Le password non corrispondono, riprovare" 
+      redirect_to user_password_path
+    elsif !password.match(/\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+])[^ ]{8,}\z/)
+      $messaggio_errore = "Password debole, riprovare con un'altra"
+      redirect_to user_password_path
+    else
+      super do |resource|
+        if resource.errors.empty?
+          # Invia l'email di conferma
+          PasswordMailer.password_changed(resource).deliver_now
+        end
+      end
+    end
+  end
+
+
 
   # protected
 

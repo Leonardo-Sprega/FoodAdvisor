@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_01_210853) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_03_184434) do
   create_table "foto_ristorantes", force: :cascade do |t|
     t.string "url"
     t.integer "ristorante_id", null: false

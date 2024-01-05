@@ -1,25 +1,116 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+
+<% if $messaggio_notizia.present? %>
+  <% flash[:notizia] = $messaggio_notizia %>
+  <% $messaggio_notizia = nil %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<% if $messaggio_errore.present? %>
+  <% flash[:alert] = $messaggio_errore %>
+  <% $messaggio_errore = nil %>
+<% end %>
+
+
+<div class = "titolo_form">
+  Cambia la tua Password
+  <% flash.each do |key, value| %>
+    <div class="<%= key %>"><%= value %></div>
+  <% end %>
+</div>
+
+
+
+
+<div class = "form_password_dimenticata">
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+
+
+    <div class="field register-label  register-label-pass-dim-2">
+      <%= f.label :password, "New password" %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "register-text register-text-2 pass_color", id: "password" , oninput: "validator()"%>
+      <i class="fa-regular fa-eye"  style="color: black;" onclick="togglePasswordVisibility()"></i>
+    </div>
+
+    <script>
+      function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+        } else {
+          passwordInput.type = 'password';
+        }
+      }
+    </script>
+
+    <div class="field register-label  register-label-pass-dim">
+      <%= f.label :password_confirmation, "Conferma Password" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "register-text" %>
+    </div>
+    
+    <div class = "register-label-2 testo_password register-label-pass-dim">
+      PASSWORD <br> Inserire almeno: <br> 1 cifra, 1 Maiuscola, 1 minuscola,
+      1 carattere speciale <br> 8 caratteri minimo
+    </div>
+
+    <div class="actions  register-label-pass-dim">
+      <%= f.submit "Change my password",class: "nav-btn register-label-nav-btn" %>
+    </div>
+  <% end %>
+
+</div>
+
+
+
+
+<script>
+  function validator() {
+    var x = 0;
+    var password = document.getElementById('password').value;
+    var bar = document.getElementById("password");
+
+    //controllo numeri
+    var check=/[0-9]/;
+    if(check.test(password)){
+      x += 20;
+    }
+    //controllo minuscole
+    var check2=/[a-z]/;
+    if(check2.test(password)){
+        x += 20;
+    }
+    //controllo maiuscole
+    var check3=/[A-Z]/;
+    if(check3.test(password)){
+        x += 20;
+    }
+    //controllo simboli
+    var check4=/[$-/:-?{-~!"^_`\[\]]/;
+    if(check4.test(password)){
+        x += 20;
+    }
+    // controllo lunghezza (minore o uguale a 10 caratteri)
+    if(password.length >= 8){
+        x += 20;
+    }
+  
+
+    if (x == 100) {
+      bar.style.backgroundColor = "rgba(0, 255, 0, 0.673)";
+    }
+    if (x <= 80) {
+        bar.style.backgroundColor = "rgba(255, 166, 0, 0.659)";
+      }
+    if (x <=60) {
+      bar.style.backgroundColor = "rgba(255, 0, 0, 0.258)";
+    }
+    if (x == 0) {
+      bar.style.backgroundColor = "";
+    }
+  }
+</script>
