@@ -68,6 +68,24 @@ class PrenotazionesController < ApplicationController
     end
   end
 
+  def noutente 
+    rist=Ristorante.find_by(id:params[:ristorante_id])
+    email=params[:emailcliente]
+    ora=params[:ora]
+    data=params[:data]
+    na=params[:nadulti]
+    nb=params[:nbambini]
+    if email.present? 
+      # Chiamata al mailer solo se l'email è presente e è valida
+      PasswordMailer.conf_prenotazione(email, rist, ora, data, na, nb).deliver_now
+      redirect_to ristorante_path(rist)
+    else
+      # Gestione dell'errore se l'email è vuota o non è valida
+      flash[:error] = "L'indirizzo email non è valido."
+      redirect_to ristorante_path(rist)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prenotazione
@@ -81,10 +99,10 @@ class PrenotazionesController < ApplicationController
 
   protected
   def has_ristorante_and_user
-    if !user_signed_in?
-      flash[:warning] = 'Devi accedere con il tuo account'
-      redirect_to new_user_session_path
-    end
+    #if !user_signed_in?
+    #  flash[:warning] = 'Devi accedere con il tuo account'
+    #  redirect_to new_user_session_path
+    #end
     unless (@ristorante = Ristorante.where(:id => params[:ristorante_id]).first)
       flash[:warning] = 'Review must be for an existing movie.'
       redirect_to ristorante_path
