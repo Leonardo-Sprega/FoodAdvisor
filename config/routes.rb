@@ -47,7 +47,9 @@ Rails.application.routes.draw do
     get 'order_recensione/:order_type', action: :order_recensione, on: :member
     resources :piattos
     resources :foto_ristorantes
-    resources :prenotaziones
+    resources :prenotaziones do
+      post 'noutente', on: :collection
+    end
     resources :recensiones do
       resources :foto_recensiones
     end

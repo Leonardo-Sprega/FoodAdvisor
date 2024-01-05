@@ -2,7 +2,8 @@
     <div class="container" id="newrist">
       <h1>Prenotati per <%= @ristorante.nome %></h1>
 
-      <%= form_tag ristorante_prenotaziones_path(@ristorante), class: 'form' do %>
+      <% if user_signed_in? %>
+        <%= form_tag ristorante_prenotaziones_path(@ristorante), class: 'form' do %>
 
         <div class="form-group ">
           <label> Nome del cliente </label>
@@ -14,45 +15,98 @@
           <%= text_field_tag 'prenotazione[cognomecliente]',nil ,class:"form-control",placeholder:"Inserisci il cognome del cliente",value: current_user.cognome %>
         </div>
 
-        <div class="form-group ">
-          <label> Telefono del cliente </label>
-          <%= number_field_tag 'prenotazione[telefonocliente]',nil,class:"form-control" ,placeholder:"Inserisci numero di telefono del cliente", pattern:"[0-9]{10}",required: true %>
-        </div>
+          <div class="form-group ">
+            <label> Telefono del cliente </label>
+            <%= number_field_tag 'prenotazione[telefonocliente]',nil,class:"form-control" ,placeholder:"Inserisci numero di telefono del cliente", pattern:"[0-9]{10}",required: true %>
+          </div>
 
         <div class="form-group ">
           <label> Email del cliente </label>
           <%= email_field_tag 'prenotazione[emailcliente]' , nil,class:"form-control" ,placeholder:"Inserisci l'email del cliente",value: current_user.email%>
         </div>
 
-        <div class="form-group ">
-          <label> Ora prenotazione(<%=@ristorante.oraapertura.strftime("%H:%M")%> - <%=@ristorante.orachiusura.strftime("%H:%M")%>)</label>
-          <%= time_field_tag 'prenotazione[ora]', nil ,class:"form-control", min:  @ristorante.oraapertura.strftime("%H:%M") , max:  @ristorante.orachiusura.strftime("%H:%M")  , required: true  %>
-        </div>
+          <div class="form-group ">
+            <label> Ora prenotazione(<%=@ristorante.oraapertura.strftime("%H:%M")%> - <%=@ristorante.orachiusura.strftime("%H:%M")%>)</label>
+            <%= time_field_tag 'prenotazione[ora]', nil ,class:"form-control", min:  @ristorante.oraapertura.strftime("%H:%M") , max:  @ristorante.orachiusura.strftime("%H:%M")  , required: true  %>
+          </div>
 
-        <div class="form-group ">
-          <label> Data prenotazione </label>
-          <%= date_field_tag 'prenotazione[data]', nil ,class:"form-control",min: Date.today,  required: true %>
-        </div>
+          <div class="form-group ">
+            <label> Data prenotazione </label>
+            <%= date_field_tag 'prenotazione[data]', nil ,class:"form-control",min: Date.today,  required: true %>
+          </div>
 
-        <div class="form-group ">
-          <label> Adulti presenti </label>
-          <%= number_field_tag 'prenotazione[nadulti]', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti adulti sono presenti alla cena",required: true %>
-        </div>
+          <div class="form-group ">
+            <label> Adulti presenti </label>
+            <%= number_field_tag 'prenotazione[nadulti]', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti adulti sono presenti alla cena",required: true %>
+          </div>
 
-        <div class="form-group ">
-          <label> Bambini presenti</label>
-          <%= number_field_tag 'prenotazione[nbambini]', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti bambini sono presenti alla cena",required: true %>
-        </div>
+          <div class="form-group ">
+            <label> Bambini presenti</label>
+            <%= number_field_tag 'prenotazione[nbambini]', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti bambini sono presenti alla cena",required: true %>
+          </div>
 
-        <div class="form-group ">
-          <label> Inserisci un messaggio per il ristoratore </label>
-          <%= text_area_tag 'prenotazione[messaggio]', nil,placeholder:"Inserisci note, allergie, ecc....", size: '60x10',class:"form-control" %>
-        </div> 
+          <div class="form-group ">
+            <label> Inserisci un messaggio per il ristoratore </label>
+            <%= text_area_tag 'prenotazione[messaggio]', nil,placeholder:"Inserisci note, allergie, ecc....", size: '60x10',class:"form-control" %>
+          </div> 
 
-        <div class="form-group" id="div-submit">
-          <%= submit_tag 'Prenota' %>
-        </div>
+          <div class="form-group" id="div-submit">
+            <%= submit_tag 'Prenota' %>
+          </div>
 
+        <% end %>
+      <% else %>
+        <%= form_tag noutente_ristorante_prenotaziones_path(@ristorante), class: 'form' do %>
+
+          <div class="form-group ">
+            <label> Nome del cliente </label>
+            <%= text_field_tag 'nomecliente', nil,class:"form-control",placeholder:"Inserisci il nome del cliente",required: true %>
+          </div>
+
+          <div class="form-group ">
+            <label> Cognome del cliente </label>
+            <%= text_field_tag 'cognomecliente',nil ,class:"form-control",placeholder:"Inserisci il cognome del cliente" %>
+          </div>
+
+          <div class="form-group ">
+            <label> Telefono del cliente </label>
+            <%= number_field_tag 'telefonocliente',nil,class:"form-control" ,placeholder:"Inserisci numero di telefono del cliente", pattern:"[0-9]{10}",required: true %>
+          </div>
+
+          <div class="form-group ">
+            <label> Email del cliente </label>
+            <%= email_field_tag 'emailcliente' , nil,class:"form-control" ,placeholder:"Inserisci l'email del cliente" ,required: true%>
+          </div>
+
+          <div class="form-group ">
+            <label> Ora prenotazione(<%=@ristorante.oraapertura.strftime("%H:%M")%> - <%=@ristorante.orachiusura.strftime("%H:%M")%>)</label>
+            <%= time_field_tag 'ora', nil ,class:"form-control", min:  @ristorante.oraapertura.strftime("%H:%M") , max:  @ristorante.orachiusura.strftime("%H:%M")  , required: true  %>
+          </div>
+
+          <div class="form-group ">
+            <label> Data prenotazione </label>
+            <%= date_field_tag 'data', nil ,class:"form-control",min: Date.today,  required: true %>
+          </div>
+
+          <div class="form-group ">
+            <label> Adulti presenti </label>
+            <%= number_field_tag 'nadulti', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti adulti sono presenti alla cena",required: true %>
+          </div>
+
+          <div class="form-group ">
+            <label> Bambini presenti</label>
+            <%= number_field_tag 'nbambini', nil,max: 20,class:"form-control" ,placeholder:"Inserisci quanti bambini sono presenti alla cena",required: true %>
+          </div>
+
+          <div class="form-group ">
+            <label> Inserisci un messaggio per il ristoratore </label>
+            <%= text_area_tag 'messaggio', nil,placeholder:"Inserisci note, allergie, ecc....", size: '60x10',class:"form-control" %>
+          </div> 
+
+          <div class="form-group" id="div-submit">
+            <%= submit_tag 'Prenota' %>
+          </div>
+        <% end %>
       <% end %>
 
       <div id="div-back">
