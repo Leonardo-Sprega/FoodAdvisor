@@ -3,7 +3,7 @@
     <div id="borderdiv">
         <table><tr>
             <td id="sx_rec">
-              <%if User.find(recensione.user_id).avatar%><img src=<%= User.find(recensione.user_id).avatar%> alt="Avatar"><%else%><img src="https://drive.google.com/uc?export=view&id=1YvD5yk7EfjT3iovndkMd1vouw6bbNxEc" alt="Avatar"><%end%>
+              <%if User.find(recensione.user_id).avatar && User.find(recensione.user_id).avatar!=""%><img src=<%= User.find(recensione.user_id).avatar%> alt="Avatar"><%else%><img src="https://drive.google.com/uc?export=view&id=1YvD5yk7EfjT3iovndkMd1vouw6bbNxEc" alt="Avatar"><%end%>
               <p style="font-weight: bold;"><%= User.find(recensione.user_id).nome %></p>  
               <%#<p>rispettabilita'</p>%>
             </td>
