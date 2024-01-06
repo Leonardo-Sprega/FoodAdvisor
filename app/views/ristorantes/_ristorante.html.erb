@@ -114,7 +114,7 @@
             <div id="sec_menu">
               <%# Piatto.where(ristorante_id:params[:id]).each do |piatto| %>
               <% ristorante.piattos.each do |piatto| %>
-                <% if piatto.speciale==false%>
+                <% if !piatto.speciale || piatto.speciale==false %>
                     <div id="sec_piatto">
                       <div class="row"><div class="col-auto"><h5><%= piatto.nome %></h5></div><div class="col-auto"><p>$<%= piatto.prezzo %></p></div></div>
                       <p ><%= piatto.descrizione%></p>
