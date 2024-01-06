@@ -204,3 +204,10 @@
 
 
 }
+
+.box-recensioni{
+    display: flex;
+    background-color: antiquewhite;
+    justify-content: space-evenly;
+    padding: 1em;
+}

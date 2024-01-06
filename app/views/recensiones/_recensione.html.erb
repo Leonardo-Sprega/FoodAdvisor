@@ -1,4 +1,4 @@
-<div id="<%= dom_id recensione %>">
+<div id="<%= dom_id recensione %>" class="box-recensioni">
   <p>
     <strong>Titolo:</strong>
     <%= recensione.titolo %>
@@ -8,5 +8,24 @@
     <strong>Ristorante:</strong>
     <%= @ristorante.where(id: recensione.ristorante_id).first.nome %>
   </p>
+  <p>
+    <strong>Utente:</strong>
+    <%= [User.where(id: recensione.user_id).first.nome, User.where(id: recensione.user_id).first.cognome].join(' ') %>
+  </p>
+
+
+    <p>
+    <strong>Valutazione:</strong>
+    <% for i in 0...recensione.valutazione%>
+    <i class="fa-solid fa-star"></i>
+    <%end%>
+    <% for i in 0...(5 - recensione.valutazione)%>
+    <i class="fa-regular fa-star"></i>
+    <%end%>
+
+  </p>
+      <p>
+      <%= link_to "Show this recensione", ristorante_recensione_path(params[:ristorante_id], recensione) %>
+    </p>
 
 </div>
