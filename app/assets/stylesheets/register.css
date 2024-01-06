@@ -44,6 +44,8 @@
 
     border: 2px solid black;
     border-radius: 10px;
+
+    margin-bottom:  150px;
 }
 .parte_sopra{
 
@@ -126,6 +128,8 @@
 
     border: 2px solid black;
     border-radius: 10px;
+
+    margin-bottom:  150px;
 }
 .parte_form{
     text-align: center;
@@ -177,6 +181,8 @@
 
     border: 2px solid black;
     border-radius: 10px;
+
+    margin-bottom:  150px;
 }
 .register-label-pass-dim{
     text-align: center;
