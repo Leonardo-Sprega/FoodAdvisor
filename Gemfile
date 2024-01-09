@@ -109,3 +109,8 @@ gem 'kaminari'
 gem 'gon'
 
 gem 'jquery-rails'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.1.0'
+end
+gem 'factory_bot_rails'

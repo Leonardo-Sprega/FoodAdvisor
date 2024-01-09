@@ -40,7 +40,6 @@ Rails.application.routes.draw do
   resources :login
   resources :home
   resources :tipo_cucinas
-  resources :utentes
   resources :likes, only: [:create, :destroy]
   resources :like_recensiones, only: [:create, :destroy]
   resources :ristorantes do

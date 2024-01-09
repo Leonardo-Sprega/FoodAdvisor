@@ -78,10 +78,11 @@ class PrenotazionesController < ApplicationController
     if email.present? 
       # Chiamata al mailer solo se l'email è presente e è valida
       PasswordMailer.conf_prenotazione(email, rist, ora, data, na, nb).deliver_now
+      $messaggio_notizia = "Prenotazione effettuata e inviata sulla tua Email"
       redirect_to ristorante_path(rist)
     else
       # Gestione dell'errore se l'email è vuota o non è valida
-      flash[:error] = "L'indirizzo email non è valido."
+      $messaggio_errore = "L'indirizzo email non è valido"
       redirect_to ristorante_path(rist)
     end
   end

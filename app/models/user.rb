@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
 
   validates :email, presence: true, unless: :from_auth?
-  validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+])/, message: "deve contenere almeno una cifra, una lettera maiuscola, una lettera minuscola e un carattere speciale" }, unless: :from_auth?
-  validates :password_confirmation, presence: true, unless: :from_auth?
+  validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+])/, message: "deve contenere almeno una cifra, una lettera maiuscola, una lettera minuscola e un carattere speciale" }, unless: :from_auth? , if:  :password_required?
+  validates :password_confirmation, presence: true, unless: :from_auth?, if: :password_required?
   validates :nome, presence: true, unless: :from_auth?
   validates :cognome, presence: true, unless: :from_auth?
   validates :citta, presence: true, unless: :from_auth?
@@ -17,6 +17,10 @@ class User < ApplicationRecord
   
   def from_auth?
     provider.present? && (provider == 'github' || provider == 'google_oauth2')
+  end
+
+  def password_required?
+    !password.nil? || !password_confirmation.nil?
   end
 
   def self.create_from_provider_data(provider_data)

@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
+
+
+
 
 
 
@@ -17,8 +23,6 @@
     <div class="<%= key %>"><%= value %></div>
   <% end %>
 </div>
-
-
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -127,7 +131,7 @@
           </div>
 
           <div>
-            <%= f.label :current_password , "Non ricordi la Password?", class: "field register-label" %><br>
+            <%= f.label "Non ricordi la Password?", class: "field register-label" %><br>
             <%= link_to "Clicca qui!", new_password_path(resource_name), class: "nav-btn login_botton " %> 
             <div class = "register-label-2 testo_password">
               Verrà effettuato il LogOut
@@ -158,6 +162,15 @@
       </div> 
     
     </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -213,5 +226,4 @@
     }
   }
 </script>
-
 

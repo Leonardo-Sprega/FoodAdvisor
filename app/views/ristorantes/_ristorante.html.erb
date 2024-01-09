@@ -1,4 +1,22 @@
 <div id="<%= dom_id ristorante %>" style="margin:0;padding:0;">
+
+
+
+  <% if $messaggio_notizia.present? %>
+    <% flash[:notizia] = $messaggio_notizia %>
+    <% $messaggio_notizia = nil %>
+  <% end %>
+
+  <% if $messaggio_errore.present? %>
+    <% flash[:alert] = $messaggio_errore %>
+    <% $messaggio_errore = nil %>
+  <% end %>
+
+  <div class = "titolo_form">
+    <% flash.each do |key, value| %>
+      <div class="<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
     
   <div id="rist">
     <div class="container" id="ristorantes_info">

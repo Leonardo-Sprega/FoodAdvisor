@@ -23,12 +23,12 @@ var slider = tns({
   }
 });
 
-var slider = tns({
+var slider2 = tns({
   container: '.suggestion',
   items: 3,
   slideBy: 'page',
   nav: false,
-  controlsContainer: '.carouselBtns',
+  controlsContainer: '.carouselBtns2',
   autoplay: false,
   responsive: {
     0: {

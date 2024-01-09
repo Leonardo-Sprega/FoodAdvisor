@@ -57,4 +57,10 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  class ActionDispatch::Request
+    def location
+      "101.56.24.215"
+    end
+  end
 end

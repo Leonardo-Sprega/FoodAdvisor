@@ -1,4 +1,7 @@
 
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
 
 
 <% if $messaggio_notizia.present? %>
@@ -112,6 +115,8 @@
           <div class="actions">
             <%= f.submit "Registrati", class: "nav-btn "  %>
           </div>
+          <br>
+          <%= link_to "Torna alla Home", home_index_path, class:"nav-btn" %>
         </div>
 
       </div>
