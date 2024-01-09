@@ -44,9 +44,10 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :indirizzo %>
-    <%= form.text_field :indirizzo ,class:"form-control" ,placeholder:"Inserisci l'Indirizzo dove e' situato il Ristorante", required: true %>
+    <%= form.label :indirizzo ,"Indirizzo ,N. civico"%>
+    <%= form.text_field :indirizzo ,class:"form-control" ,placeholder:"Inserisci l'indirizzo cosi' INDIRIZZO ,CIVICO", pattern:"[A-Za-z\s]+,[0-9]+",required: true %>
   </div>
+
   <div class="form-group">
     <%= form.label :cap %>
     <%= form.text_field :cap ,class:"form-control" ,placeholder:"Inserisci il Cap dove e' situato il Ristorante", required: true %>
