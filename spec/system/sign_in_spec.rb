@@ -52,12 +52,20 @@ describe "User signs in", type: :system do
     fill_in 'ristorante_regione', with: Faker::Address.state
     fill_in 'ristorante_provincia', with: Faker::Address.state_abbr
     fill_in 'ristorante_citta', with: Faker::Address.city
-    fill_in 'ristorante_indirizzo', with: Faker::Address.street_address
+    fill_in 'ristorante_indirizzo', with: "Via test prova ,32"
     fill_in 'ristorante_cap', with: Faker::Address.zip_code
     fill_in 'ristorante_oraapertura', with: '08:00' 
     fill_in 'ristorante_orachiusura', with: '16:00' 
     select "italiana", from: "ristorante[tipo_cucina_id]"
     fill_in 'ristorante_descrizione', with: Faker::Lorem.paragraph
+
+
+    fill_in 'ristorante[piattos_attributes][0][nome]', with: "carbonara"
+    fill_in 'ristorante[piattos_attributes][0][descrizione]', with: "è buona"
+    fill_in 'ristorante[piattos_attributes][0][prezzo]', with: 12
+
+
+    fill_in 'ristorante[foto_ristorantes_attributes][0][url]', with: "https://media-assets.lacucinaitaliana.it/photos/61fac2ad07be724774c9c5a9/16:9/w_2240,c_limit/Cena-a-Como-portrait.jpg"
 
     click_button 'Create Ristorante'
 
