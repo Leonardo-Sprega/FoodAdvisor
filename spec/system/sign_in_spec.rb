@@ -72,8 +72,8 @@ describe "User signs in", type: :system do
     expect(page).to have_current_path(ristorante_path(Ristorante.last))
 
 
-    
 
+    
   end
 
 end
