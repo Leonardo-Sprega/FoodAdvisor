@@ -13,7 +13,11 @@ class ProfiloController < ApplicationController
     end
 
     def ristoranti_utente
-      @ristoranti = Ristorante.where(user_id: current_user).page(params[:page]).per(5)
+      if current_user.ristoratore.downcase == 'true' || current_user.ristoratore.downcase == 'si'
+        @ristoranti = Ristorante.where(user_id: current_user).page(params[:page]).per(5)
+      else
+        @ristoranti = Ristorante.joins(:likes).where(likes: {user_id: current_user}).page(params[:page]).per(5)
+      end
       respond_to do |format|
         format.js
       end

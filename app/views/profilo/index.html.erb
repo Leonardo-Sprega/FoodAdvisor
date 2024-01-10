@@ -39,6 +39,8 @@
 
         <% if current_user.ristoratore.downcase=='true' || current_user.ristoratore=='1' || current_user.ristoratore.downcase=='si'%>
             <%= link_to "Ristoranti", ristoranti_utente_path,class:"profile-section" ,remote: true %>
+        <% else%>
+            <%= link_to "Ristoranti preferiti", ristoranti_utente_path,class:"profile-section" ,remote: true %>
         <%end %>
 
         

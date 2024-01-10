@@ -102,7 +102,7 @@
 
           <div class="field register-label">
             <%= f.label :ristoratore %><br />
-            <%= f.select :ristoratore, options_for_select([["No",false] , ["Si",true]]), prompt: "Sei un ristoratore?", class: "register-text" ,selected: 0 ,required: true  %>
+            <%= f.select :ristoratore, options_for_select([["No",false] , ["Si",true]], selected: current_user.ristoratore), prompt: "Sei un ristoratore?", class: "register-text",required: true  %>
           </div>
       
         </div>
